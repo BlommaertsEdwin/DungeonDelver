@@ -28,5 +28,5 @@ func self_destruct():
 #	pass
 
 
-func _on_FireBall_body_entered(body):
+func _on_FireBall_body_entered(_body):
 	queue_free() # Replace with function body.

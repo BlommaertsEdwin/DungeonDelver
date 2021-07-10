@@ -119,7 +119,7 @@ func _spawn_fireball():
 		fireball_item = fireball.instance()
 		fireball_item.rotation = get_angle_to(player_detection_zone.player.global_position)
 		print(fireball_item.rotation)
-		var temp = global_transform
+#		var temp = global_transform
 		var scene = get_tree().current_scene
 		get_parent().remove_child(self)
 		scene.add_child(self)

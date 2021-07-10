@@ -3,6 +3,7 @@ extends KinematicBody2D
 enum {
 	MOVE,
 	ATTACK,
+	DEAD,
 }
 
 var state = MOVE
@@ -41,7 +42,9 @@ func _physics_process(delta):
 		MOVE:
 			MovementLoop(delta)
 		ATTACK:
-			AttackLoop((delta))
+			AttackLoop(delta)
+		DEAD:
+			DeadLoop(delta)
 # MOVEMENT 
 func MovementLoop(delta):
 	if moving == false:
@@ -51,6 +54,7 @@ func MovementLoop(delta):
 		animation_tree.set("parameters/IDLE/blend_position", movement)
 		animation_tree.set("parameters/WALK/blend_position", movement)
 		animation_tree.set("parameters/ATTACK/blend_position", movement)
+		animation_tree.set("parameters/DEATH/blend_position", movement)
 		animation_state.travel("WALK")
 		speed += acceleration * delta
 		if speed >= max_speed:
@@ -61,10 +65,15 @@ func MovementLoop(delta):
 	else:
 		moving = false
 
-func AttackLoop(delta):
+func AttackLoop(_delta):
 #	movement = Vector2.ZERO
 	speed = 0
 	animation_state.travel("ATTACK")
+	
+func DeadLoop(_delta):
+	speed = 0
+	animation_state.travel("DEATH")
+#	queue_free()
 
 func AttackAnimationFinished():
 	state = MOVE
@@ -77,7 +86,8 @@ func _on_HurtBox_body_entered(body):
 	body.queue_free()
 	
 func player_death():
-	queue_free()
+	state = DEAD
+	
 	
 func health_changed(health):
 	label.text = str(health)

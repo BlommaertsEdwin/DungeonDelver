@@ -19,8 +19,8 @@ func _ready():
 func can_attack_player():
 	return can_attack
 
-func _on_AttackZone_body_entered(body):
+func _on_AttackZone_body_entered(_body):
 	can_attack = true
 
-func _on_AttackZone_body_exited(body):
+func _on_AttackZone_body_exited(_body):
 	can_attack = false
