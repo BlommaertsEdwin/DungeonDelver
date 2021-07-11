@@ -5,7 +5,7 @@
 [ext_resource path="res://HitHurtBoxes/HitBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HitHurtBoxes/HurtBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/SwordHitBox.gd" type="Script" id=5]
-[ext_resource path="res://Player/Label.gd" type="Script" id=6]
+[ext_resource path="res://Healthbar.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 length = 0.55
@@ -83,18 +83,6 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 90.0 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("HitBoxPivot/SwordHitBox/CollisionShape2D:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.3, 0.55 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -369,7 +357,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "Death"
-length = 0.6
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -868,112 +856,112 @@ min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=42]
-animation = "Death"
-
-[sub_resource type="AnimationNodeAnimation" id=43]
-animation = "Death"
-
-[sub_resource type="AnimationNodeAnimation" id=44]
-animation = "Death"
-
-[sub_resource type="AnimationNodeAnimation" id=45]
-animation = "Death"
-
-[sub_resource type="AnimationNodeAnimation" id=46]
-animation = "Death"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=41]
-blend_point_0/node = SubResource( 42 )
-blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 43 )
-blend_point_1/pos = Vector2( 0, 1 )
-blend_point_2/node = SubResource( 44 )
-blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 45 )
-blend_point_3/pos = Vector2( 0, -1 )
-blend_point_4/node = SubResource( 46 )
-blend_point_4/pos = Vector2( -1, 0 )
-
 [sub_resource type="AnimationNodeAnimation" id=21]
-animation = "IdleLeft"
+animation = "Death"
 
 [sub_resource type="AnimationNodeAnimation" id=22]
-animation = "IdleDown"
+animation = "Death"
 
 [sub_resource type="AnimationNodeAnimation" id=23]
-animation = "IdleRight"
+animation = "Death"
 
 [sub_resource type="AnimationNodeAnimation" id=24]
-animation = "IdleUp"
+animation = "Death"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=25]
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "Death"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=26]
 blend_point_0/node = SubResource( 21 )
 blend_point_0/pos = Vector2( -1, 0 )
 blend_point_1/node = SubResource( 22 )
-blend_point_1/pos = Vector2( 0, 1.1 )
+blend_point_1/pos = Vector2( 0, 1 )
 blend_point_2/node = SubResource( 23 )
 blend_point_2/pos = Vector2( 1, 0 )
 blend_point_3/node = SubResource( 24 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_point_4/node = SubResource( 25 )
+blend_point_4/pos = Vector2( -1, 0 )
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "IdleLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "IdleDown"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "IdleRight"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "IdleUp"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=31]
+blend_point_0/node = SubResource( 27 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 28 )
+blend_point_1/pos = Vector2( 0, 1.1 )
+blend_point_2/node = SubResource( 29 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 30 )
 blend_point_3/pos = Vector2( 0, -1.1 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=26]
+[sub_resource type="AnimationNodeAnimation" id=32]
 animation = "WalkLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=27]
+[sub_resource type="AnimationNodeAnimation" id=33]
 animation = "WalkDown"
 
-[sub_resource type="AnimationNodeAnimation" id=28]
+[sub_resource type="AnimationNodeAnimation" id=34]
 animation = "WalkRight"
 
-[sub_resource type="AnimationNodeAnimation" id=29]
+[sub_resource type="AnimationNodeAnimation" id=35]
 animation = "WalkUp"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=30]
-blend_point_0/node = SubResource( 26 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=36]
+blend_point_0/node = SubResource( 32 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 27 )
+blend_point_1/node = SubResource( 33 )
 blend_point_1/pos = Vector2( 0, 1.1 )
-blend_point_2/node = SubResource( 28 )
+blend_point_2/node = SubResource( 34 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 29 )
+blend_point_3/node = SubResource( 35 )
 blend_point_3/pos = Vector2( 0, -1.1 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 snap = Vector2( 0.01, 0.01 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
 
-[sub_resource type="AnimationNodeStateMachine" id=35]
+[sub_resource type="AnimationNodeStateMachine" id=42]
 states/ATTACK/node = SubResource( 20 )
 states/ATTACK/position = Vector2( 197, 172 )
-states/DEATH/node = SubResource( 41 )
+states/DEATH/node = SubResource( 26 )
 states/DEATH/position = Vector2( 197, -37.2408 )
-states/IDLE/node = SubResource( 25 )
+states/IDLE/node = SubResource( 31 )
 states/IDLE/position = Vector2( 197, 83 )
-states/WALK/node = SubResource( 30 )
+states/WALK/node = SubResource( 36 )
 states/WALK/position = Vector2( 427, 83 )
-transitions = [ "IDLE", "WALK", SubResource( 31 ), "WALK", "IDLE", SubResource( 32 ), "IDLE", "ATTACK", SubResource( 33 ), "ATTACK", "IDLE", SubResource( 34 ), "IDLE", "DEATH", SubResource( 47 ) ]
+transitions = [ "IDLE", "WALK", SubResource( 37 ), "WALK", "IDLE", SubResource( 38 ), "IDLE", "ATTACK", SubResource( 39 ), "ATTACK", "IDLE", SubResource( 40 ), "IDLE", "DEATH", SubResource( 41 ) ]
 start_node = "IDLE"
 graph_offset = Vector2( 0, -60.4584 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=36]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=43]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=37]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=44]
 
-[sub_resource type="CapsuleShape2D" id=38]
+[sub_resource type="CapsuleShape2D" id=45]
 radius = 30.0
 height = 0.0
 
@@ -1008,11 +996,11 @@ position = Vector2( -1, 24 )
 shape = SubResource( 14 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 35 )
+tree_root = SubResource( 42 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 36 )
+parameters/playback = SubResource( 43 )
 parameters/ATTACK/blend_position = Vector2( 0, 1 )
-parameters/ATTACK/1/playback = SubResource( 37 )
+parameters/ATTACK/1/playback = SubResource( 44 )
 parameters/DEATH/blend_position = Vector2( -0.00247729, -0.017341 )
 parameters/IDLE/blend_position = Vector2( 0, 1 )
 parameters/WALK/blend_position = Vector2( 0, 1 )
@@ -1036,18 +1024,10 @@ damage = 2
 
 [node name="CollisionShape2D" parent="HitBoxPivot/SwordHitBox" index="0"]
 position = Vector2( 34.5, 0 )
-shape = SubResource( 38 )
+shape = SubResource( 45 )
 disabled = true
 
-[node name="Label" type="Label" parent="."]
-margin_left = -19.8214
-margin_top = -57.5765
-margin_right = 20.1786
-margin_bottom = -43.5765
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Healthbar" parent="." instance=ExtResource( 7 )]
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]

@@ -20,18 +20,22 @@ onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
 onready var wander_controller = $WanderController
 const fireball = preload("res://Enemies/FireBall.tscn")
+var castbar = preload("res://CastBar.tscn")
 onready var spawn_position = $SpawnPosition
 var fireball_item = null
+var castbarInstance = null
+var cast_finished = false
 var can_cast = true
+onready var healthBar = $Healthbar
 
 
 
 func _ready():
-	health_label.text = str(stats.max_health)
 	animation_tree.active = true
 
 func _take_damage(damage):
 	stats.take_damage(damage)
+	healthBar.reduce_healthbar(stats.max_health, damage)
 
 func _on_HurtBox_area_entered(area):
 	_take_damage(area.damage)
@@ -89,43 +93,46 @@ func _physics_process(delta):
 				
 		RANGE_ATTACK:
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-			animation_state.travel("ATTACK")
-			var fireball_cast = _spawn_fireball()
-			if fireball_cast:
+			animation_state.travel("IDLE")
+			start_cast()
+			if cast_finished:
 				state = CHASE
 			
-			
-			
-
 	velocity = move_and_slide(velocity)
 
 func seek_player():
 	if player_detection_zone.can_see_player():
-		state = RANGE_ATTACK
 		var random = rand_range(1,10)
 		if random <= 5:
-			can_cast = true
 			state = CHASE
+			can_cast = true
+			cast_finished = false
 		else:
 			state = RANGE_ATTACK
-		
-		
+			
+
 func pick_random_state(state_list):
 	state_list.shuffle()
 	return state_list.pop_front()
 	
+func start_cast():
+
+	if castbarInstance == null and can_cast:
+		castbarInstance = castbar.instance()
+		castbarInstance.connect("cast_finished", self, "_spawn_fireball")
+		add_child(castbarInstance)
+	
 func _spawn_fireball():
-	if fireball_item == null and can_cast:
+	if fireball_item == null:
 		fireball_item = fireball.instance()
-		fireball_item.rotation = get_angle_to(player_detection_zone.player.global_position)
-		print(fireball_item.rotation)
-#		var temp = global_transform
-		var scene = get_tree().current_scene
-		get_parent().remove_child(self)
-		scene.add_child(self)
-		spawn_position.add_child(fireball_item)
-		can_cast = false
+		if player_detection_zone.player:
+			fireball_item.rotation = get_angle_to(player_detection_zone.player.global_position)
+			var scene = get_tree().current_scene
+			get_parent().remove_child(self)
+			scene.add_child(self)
+			spawn_position.add_child(fireball_item)
 		fireball_item = null
-		return true
-		
-		
+		cast_finished = true
+		castbarInstance = null
+		can_cast = false
+	

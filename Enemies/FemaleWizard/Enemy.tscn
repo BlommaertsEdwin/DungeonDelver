@@ -5,11 +5,11 @@
 [ext_resource path="res://HitHurtBoxes/HurtBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/FemaleWizard/Enemy.gd" type="Script" id=4]
 [ext_resource path="res://Stats.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies/FemaleWizard/Label.gd" type="Script" id=6]
 [ext_resource path="res://Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/AttackZone.gd" type="Script" id=8]
 [ext_resource path="res://Enemies/WanderController.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Enemies/WanderController.gd" type="Script" id=10]
+[ext_resource path="res://Healthbar.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 length = 0.55
@@ -962,16 +962,6 @@ parameters/WALK/blend_position = Vector2( -0.440495, 0.569412 )
 [node name="Stats" parent="." instance=ExtResource( 5 )]
 max_health = 3
 
-[node name="Label" type="Label" parent="."]
-margin_left = -19.8214
-margin_top = -57.5765
-margin_right = 20.1786
-margin_bottom = -43.5765
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="HitBoxPosition" type="Position2D" parent="."]
 position = Vector2( 0, 6 )
 
@@ -1006,9 +996,12 @@ wander_range = 150
 one_shot = true
 autostart = true
 
+[node name="Healthbar" parent="." instance=ExtResource( 11 )]
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
-[connection signal="health_changed" from="Stats" to="Label" method="_on_Stats_health_changed"]
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
+[connection signal="target_dead" from="HitBoxPosition/StaffHitBox" to="PlayerDetectionZone" method="_on_StaffHitBox_target_dead"]
+[connection signal="target_dead" from="HitBoxPosition/StaffHitBox" to="AttackZone" method="_on_StaffHitBox_target_dead"]
 [connection signal="body_entered" from="AttackZone" to="AttackZone" method="_on_AttackZone_body_entered"]
 [connection signal="body_exited" from="AttackZone" to="AttackZone" method="_on_AttackZone_body_exited"]
 [connection signal="timeout" from="WanderController/Timer" to="WanderController" method="_on_Timer_timeout"]

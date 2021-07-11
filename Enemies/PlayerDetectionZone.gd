@@ -9,4 +9,6 @@ func _on_PlayerDetectionZone_body_entered(body):
 
 func _on_PlayerDetectionZone_body_exited(_body):
 	player = null
-	
+
+func _on_StaffHitBox_target_dead():
+	player = null

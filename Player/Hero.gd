@@ -20,20 +20,20 @@ onready var animation_player = $AnimationPlayer
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
 onready var label = $Label
-var stats = PlayerStats
+onready var stats = PlayerStats
+onready var healthBar = $Healthbar
 
 func _ready():
 	stats.connect("no_health", self, "player_death")
 	stats.connect("health_changed", self, "health_changed")
 	animation_tree.active = true
-	$Label.text = str(PlayerStats.max_health)
 
 # IMPUT
 func _unhandled_input(event):
 	if event.is_action_pressed("move"):
 		moving = true
 		destination = get_global_mouse_position()
-	if event.is_action_pressed("attack"):
+	if event.is_action_pressed("attack") and state != DEAD:
 		state = ATTACK
 
 
@@ -45,6 +45,7 @@ func _physics_process(delta):
 			AttackLoop(delta)
 		DEAD:
 			DeadLoop(delta)
+			
 # MOVEMENT 
 func MovementLoop(delta):
 	if moving == false:
@@ -66,13 +67,15 @@ func MovementLoop(delta):
 		moving = false
 
 func AttackLoop(_delta):
-#	movement = Vector2.ZERO
 	speed = 0
 	animation_state.travel("ATTACK")
 	
 func DeadLoop(_delta):
 	speed = 0
 	animation_state.travel("DEATH")
+	
+	
+	
 #	queue_free()
 
 func AttackAnimationFinished():
@@ -80,19 +83,14 @@ func AttackAnimationFinished():
 
 func _on_HurtBox_area_entered(area):
 	stats.take_damage(area.damage)
+	healthBar.reduce_healthbar(stats.max_health, area.damage)
+	if stats.current_health <= 0:
+		area.player_dead()
 	
 func _on_HurtBox_body_entered(body):
 	stats.take_damage(body.damage)
+	healthBar.reduce_healthbar(stats.max_health, body.damage)
 	body.queue_free()
 	
 func player_death():
 	state = DEAD
-	
-	
-func health_changed(health):
-	label.text = str(health)
-	
-
-
-
-
