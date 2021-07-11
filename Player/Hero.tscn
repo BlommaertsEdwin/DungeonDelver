@@ -827,107 +827,107 @@ tracks/3/keys = {
 radius = 9.05099
 height = 0.0
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=46]
 animation = "AttackUp"
 
-[sub_resource type="AnimationNodeStateMachine" id=16]
+[sub_resource type="AnimationNodeStateMachine" id=47]
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=48]
 animation = "AttackLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=49]
 animation = "AttackDown"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=50]
 animation = "AttackRight"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=20]
-blend_point_0/node = SubResource( 15 )
+blend_point_0/node = SubResource( 46 )
 blend_point_0/pos = Vector2( 0, -1.1 )
-blend_point_1/node = SubResource( 16 )
+blend_point_1/node = SubResource( 47 )
 blend_point_1/pos = Vector2( 0, -1.1 )
-blend_point_2/node = SubResource( 17 )
+blend_point_2/node = SubResource( 48 )
 blend_point_2/pos = Vector2( -1, 0 )
-blend_point_3/node = SubResource( 18 )
+blend_point_3/node = SubResource( 49 )
 blend_point_3/pos = Vector2( 0, 1.1 )
-blend_point_4/node = SubResource( 19 )
+blend_point_4/node = SubResource( 50 )
 blend_point_4/pos = Vector2( 1, 0 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeAnimation" id=51]
 animation = "Death"
 
-[sub_resource type="AnimationNodeAnimation" id=22]
+[sub_resource type="AnimationNodeAnimation" id=52]
 animation = "Death"
 
-[sub_resource type="AnimationNodeAnimation" id=23]
+[sub_resource type="AnimationNodeAnimation" id=53]
 animation = "Death"
 
-[sub_resource type="AnimationNodeAnimation" id=24]
+[sub_resource type="AnimationNodeAnimation" id=54]
 animation = "Death"
 
-[sub_resource type="AnimationNodeAnimation" id=25]
+[sub_resource type="AnimationNodeAnimation" id=55]
 animation = "Death"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=26]
-blend_point_0/node = SubResource( 21 )
+blend_point_0/node = SubResource( 51 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 22 )
+blend_point_1/node = SubResource( 52 )
 blend_point_1/pos = Vector2( 0, 1 )
-blend_point_2/node = SubResource( 23 )
+blend_point_2/node = SubResource( 53 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 24 )
+blend_point_3/node = SubResource( 54 )
 blend_point_3/pos = Vector2( 0, -1 )
-blend_point_4/node = SubResource( 25 )
+blend_point_4/node = SubResource( 55 )
 blend_point_4/pos = Vector2( -1, 0 )
 
-[sub_resource type="AnimationNodeAnimation" id=27]
+[sub_resource type="AnimationNodeAnimation" id=56]
 animation = "IdleLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=28]
+[sub_resource type="AnimationNodeAnimation" id=57]
 animation = "IdleDown"
 
-[sub_resource type="AnimationNodeAnimation" id=29]
+[sub_resource type="AnimationNodeAnimation" id=58]
 animation = "IdleRight"
 
-[sub_resource type="AnimationNodeAnimation" id=30]
+[sub_resource type="AnimationNodeAnimation" id=59]
 animation = "IdleUp"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=31]
-blend_point_0/node = SubResource( 27 )
+blend_point_0/node = SubResource( 56 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 28 )
+blend_point_1/node = SubResource( 57 )
 blend_point_1/pos = Vector2( 0, 1.1 )
-blend_point_2/node = SubResource( 29 )
+blend_point_2/node = SubResource( 58 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 30 )
+blend_point_3/node = SubResource( 59 )
 blend_point_3/pos = Vector2( 0, -1.1 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=32]
+[sub_resource type="AnimationNodeAnimation" id=60]
 animation = "WalkLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=33]
+[sub_resource type="AnimationNodeAnimation" id=61]
 animation = "WalkDown"
 
-[sub_resource type="AnimationNodeAnimation" id=34]
+[sub_resource type="AnimationNodeAnimation" id=62]
 animation = "WalkRight"
 
-[sub_resource type="AnimationNodeAnimation" id=35]
+[sub_resource type="AnimationNodeAnimation" id=63]
 animation = "WalkUp"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=36]
-blend_point_0/node = SubResource( 32 )
+blend_point_0/node = SubResource( 60 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 33 )
+blend_point_1/node = SubResource( 61 )
 blend_point_1/pos = Vector2( 0, 1.1 )
-blend_point_2/node = SubResource( 34 )
+blend_point_2/node = SubResource( 62 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 35 )
+blend_point_3/node = SubResource( 63 )
 blend_point_3/pos = Vector2( 0, -1.1 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )

@@ -9,6 +9,7 @@ func take_damage(damage):
 	current_health -= damage
 	emit_signal("health_changed", current_health)
 	if current_health <= 0:
+		current_health = 0
 		emit_signal("no_health")
 		
 func get_current_health():

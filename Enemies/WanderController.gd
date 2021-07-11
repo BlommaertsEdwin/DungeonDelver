@@ -6,7 +6,6 @@ onready var timer = $Timer
 
 func update_target_position():
 	var target_vector = Vector2(rand_range(-wander_range, wander_range), rand_range(-wander_range, wander_range))
-	print(target_vector)
 	target_position = start_position + target_vector
 	
 func _on_Timer_timeout():

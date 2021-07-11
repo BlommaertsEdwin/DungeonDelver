@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Download92621.png" type="Texture" id=1]
 [ext_resource path="res://HitHurtBoxes/HitBox.tscn" type="PackedScene" id=2]
@@ -381,6 +381,58 @@ tracks/7/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+
+[sub_resource type="Animation" id=40]
+resource_name = "Death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 1280, 384, 64 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -833,6 +885,30 @@ min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "Death"
+
+[sub_resource type="AnimationNodeAnimation" id=44]
+animation = "Death"
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "Death"
+
+[sub_resource type="AnimationNodeAnimation" id=46]
+animation = "Death"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=41]
+blend_point_0/node = SubResource( 43 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 44 )
+blend_point_1/pos = Vector2( 0, 1.1 )
+blend_point_2/node = SubResource( 45 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 46 )
+blend_point_3/pos = Vector2( 0, -1.1 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+
 [sub_resource type="AnimationNodeAnimation" id=20]
 animation = "IdleLeft"
 
@@ -892,15 +968,20 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=33]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
 [sub_resource type="AnimationNodeStateMachine" id=34]
 states/ATTACK/node = SubResource( 19 )
-states/ATTACK/position = Vector2( 197, 172 )
+states/ATTACK/position = Vector2( 197, 173 )
+states/DEATH/node = SubResource( 41 )
+states/DEATH/position = Vector2( 197, -34 )
 states/IDLE/node = SubResource( 24 )
 states/IDLE/position = Vector2( 197, 83 )
 states/WALK/node = SubResource( 29 )
 states/WALK/position = Vector2( 427, 83 )
-transitions = [ "IDLE", "WALK", SubResource( 30 ), "WALK", "IDLE", SubResource( 31 ), "IDLE", "ATTACK", SubResource( 32 ), "ATTACK", "IDLE", SubResource( 33 ) ]
+transitions = [ "IDLE", "WALK", SubResource( 30 ), "WALK", "IDLE", SubResource( 31 ), "IDLE", "ATTACK", SubResource( 32 ), "ATTACK", "IDLE", SubResource( 33 ), "IDLE", "DEATH", SubResource( 42 ) ]
 start_node = "IDLE"
+graph_offset = Vector2( 0, -195.675 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=35]
 
@@ -926,15 +1007,15 @@ position = Vector2( 0, 15 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 6
-vframes = 4
 region_enabled = true
-region_rect = Rect2( 0, 1344, 1152, 768 )
+region_rect = Rect2( 0, 1280, 384, 64 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/AttackDown = SubResource( 1 )
 anims/AttackLeft = SubResource( 2 )
 anims/AttackRight = SubResource( 3 )
 anims/AttackUp = SubResource( 4 )
+anims/Death = SubResource( 40 )
 anims/IdleDown = SubResource( 5 )
 anims/IdleLeft = SubResource( 6 )
 anims/IdleRight = SubResource( 7 )
@@ -954,6 +1035,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 35 )
 parameters/ATTACK/blend_position = Vector2( 0.0309119, -0.910345 )
 parameters/ATTACK/1/playback = SubResource( 36 )
+parameters/DEATH/blend_position = Vector2( 0, 0 )
 parameters/IDLE/blend_position = Vector2( -0.816074, 0.731176 )
 parameters/WALK/blend_position = Vector2( -0.440495, 0.569412 )
 
@@ -964,15 +1046,17 @@ max_health = 3
 
 [node name="HitBoxPosition" type="Position2D" parent="."]
 position = Vector2( 0, 6 )
+rotation = 3.14159
 
 [node name="StaffHitBox" parent="HitBoxPosition" instance=ExtResource( 2 )]
-position = Vector2( 3.70813, -35.492 )
+position = Vector2( 0, -35 )
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="HitBoxPosition/StaffHitBox" index="0"]
 position = Vector2( 0, 1.88776 )
 shape = SubResource( 37 )
+disabled = true
 one_way_collision = true
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 7 )]

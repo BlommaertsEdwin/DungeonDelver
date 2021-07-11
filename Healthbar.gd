@@ -1,5 +1,5 @@
 extends Node2D
-const bar_length = 50
+const bar_length = 40
 onready var line = $Line2D
 
 
@@ -16,3 +16,5 @@ func reduce_healthbar(max_health, damage):
 	var health_portion = float(damage)/float(max_health)
 	var damage_health = bar_length*health_portion
 	line.points[1].x -= damage_health
+	if line.points[1].x <= 0:
+		line.points[1].x = 0

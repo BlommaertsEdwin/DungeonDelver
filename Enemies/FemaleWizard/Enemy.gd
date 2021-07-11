@@ -7,6 +7,7 @@ enum {
 	WANDER,
 	MELEE_ATTACK,
 	RANGE_ATTACK,
+	DEAD,
 }
 var state = IDLE
 var velocity = Vector2.ZERO
@@ -28,8 +29,6 @@ var cast_finished = false
 var can_cast = true
 onready var healthBar = $Healthbar
 
-
-
 func _ready():
 	animation_tree.active = true
 
@@ -41,16 +40,28 @@ func _on_HurtBox_area_entered(area):
 	_take_damage(area.damage)
 
 func _on_Stats_no_health():
-	queue_free()
-	
+	state = DEAD
+#	queue_free()
+
 func _physics_process(delta):
 	match state:
+		DEAD:
+			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+			animation_tree.set("parameters/IDLE/blend_position", velocity)
+			animation_tree.set("parameters/WALK/blend_position", velocity)
+			animation_tree.set("parameters/ATTACK/blend_position", velocity)
+			animation_tree.set("parameters/DEATH/blend_position", velocity)
+			remove_child(castbarInstance)
+			animation_state.travel("DEATH")
+#			DeadLoop(delta)
+			
 		IDLE:
 			seek_player()
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 			animation_tree.set("parameters/IDLE/blend_position", velocity)
 			animation_tree.set("parameters/WALK/blend_position", velocity)
 			animation_tree.set("parameters/ATTACK/blend_position", velocity)
+			animation_tree.set("parameters/DEATH/blend_position", velocity)
 			animation_state.travel("IDLE")
 			if wander_controller.get_time_left() == 0:
 				state = pick_random_state([IDLE, WANDER])
@@ -66,6 +77,7 @@ func _physics_process(delta):
 			animation_tree.set("parameters/IDLE/blend_position", velocity)
 			animation_tree.set("parameters/WALK/blend_position", velocity)
 			animation_tree.set("parameters/ATTACK/blend_position", velocity)
+			animation_tree.set("parameters/DEATH/blend_position", velocity)
 			animation_state.travel("WALK")
 			if global_position.distance_to(wander_controller.target_position) <= 4:
 				state = pick_random_state([IDLE, WANDER])
@@ -79,6 +91,7 @@ func _physics_process(delta):
 				animation_tree.set("parameters/IDLE/blend_position", velocity)
 				animation_tree.set("parameters/WALK/blend_position", velocity)
 				animation_tree.set("parameters/ATTACK/blend_position", velocity)
+				animation_tree.set("parameters/DEATH/blend_position", velocity)
 				animation_state.travel("WALK")
 				if attack_zone.can_attack_player():
 					state = MELEE_ATTACK
@@ -100,6 +113,11 @@ func _physics_process(delta):
 			
 	velocity = move_and_slide(velocity)
 
+func DeadLoop(delta):
+	
+	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	animation_state.travel("DEATH")
+
 func seek_player():
 	if player_detection_zone.can_see_player():
 		var random = rand_range(1,10)
@@ -109,19 +127,17 @@ func seek_player():
 			cast_finished = false
 		else:
 			state = RANGE_ATTACK
-			
 
 func pick_random_state(state_list):
 	state_list.shuffle()
 	return state_list.pop_front()
-	
-func start_cast():
 
+func start_cast():
 	if castbarInstance == null and can_cast:
 		castbarInstance = castbar.instance()
 		castbarInstance.connect("cast_finished", self, "_spawn_fireball")
 		add_child(castbarInstance)
-	
+
 func _spawn_fireball():
 	if fireball_item == null:
 		fireball_item = fireball.instance()
@@ -135,4 +151,3 @@ func _spawn_fireball():
 		cast_finished = true
 		castbarInstance = null
 		can_cast = false
-	
