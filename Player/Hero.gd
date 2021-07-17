@@ -84,9 +84,7 @@ func AttackAnimationFinished():
 func _on_HurtBox_area_entered(area):
 	stats.take_damage(area.damage)
 	healthBar.reduce_healthbar(stats.max_health, area.damage)
-	if stats.current_health <= 0:
-		area.player_dead()
-	
+
 func _on_HurtBox_body_entered(body):
 	stats.take_damage(body.damage)
 	healthBar.reduce_healthbar(stats.max_health, body.damage)
@@ -94,3 +92,27 @@ func _on_HurtBox_body_entered(body):
 	
 func player_death():
 	state = DEAD
+
+
+func _on_SwordHitBox_killed_enemy(experience_gained):
+	print("Killed")
+	PlayerStats.experience_pool += experience_gained
+	while PlayerStats.experience_pool >= PlayerStats.experience_required:
+		LevelUp()
+		PlayerStats.experience_pool -= PlayerStats.experience_required
+	print(experience_gained)
+	print(PlayerStats.level)
+	
+func LevelUp():
+	PlayerStats.level += 1
+	# increase skill points
+	# increase stats
+	# increase 
+	pass
+
+
+
+
+func _on_SkillBar_abilityUsed(ability_name):
+	if state != DEAD:
+		state = ATTACK

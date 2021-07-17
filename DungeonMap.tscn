@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://DungeonMap.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/tile_grass_v01bs.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/0x72_16x16DungeonTileset.v3.png" type="Texture" id=4]
 [ext_resource path="res://Enemies/FemaleWizard/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://AbilityBox.png" type="Texture" id=6]
+[ext_resource path="res://swords-emblem.svg" type="Texture" id=7]
+[ext_resource path="res://AbilityButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Player/GUI.gd" type="Script" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "0x72_16x16DungeonTileset.v3.png 0"
@@ -31,13 +35,14 @@
 0/shapes = [  ]
 0/z_index = 0
 
+[sub_resource type="BitmapFont" id=2]
+
 [node name="DungeonMap" type="Node2D"]
 position = Vector2( 1, 0 )
 script = ExtResource( 2 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( -307.892, -210.705 )
-scale = Vector2( 1, 0.992134 )
 texture = ExtResource( 3 )
 centered = false
 region_enabled = true
@@ -61,7 +66,93 @@ remote_path = NodePath("../../../Camera2D")
 position = Vector2( 132.143, -124.592 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 current = true
 process_mode = 0
 smoothing_enabled = true
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="SkillBar" type="Control" parent="GUI"]
+margin_left = 190.0
+margin_top = 250.0
+margin_right = 366.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="GUI/SkillBar"]
+margin_right = 491.0
+margin_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource( 6 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/SkillBar/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AbilityButton1" parent="GUI/SkillBar/Background/HBoxContainer" instance=ExtResource( 8 )]
+position = Vector2( 8, 8 )
+scale = Vector2( 0.05, 0.05 )
+
+[node name="AbilityButton" parent="GUI/SkillBar/Background/HBoxContainer/AbilityButton1" index="0" groups=[
+"UiButtons",
+]]
+texture_normal = ExtResource( 7 )
+on_the_gcd = false
+
+[node name="Counter" parent="GUI/SkillBar/Background/HBoxContainer/AbilityButton1/AbilityButton" index="2"]
+margin_bottom = 1.0
+
+[node name="Value" parent="GUI/SkillBar/Background/HBoxContainer/AbilityButton1/AbilityButton/Counter" index="0"]
+custom_fonts/font = SubResource( 2 )
+
+[node name="AbilityButton2" parent="GUI/SkillBar/Background/HBoxContainer" instance=ExtResource( 8 )]
+position = Vector2( 49, 8 )
+scale = Vector2( 0.05, 0.05 )
+
+[node name="AbilityButton" parent="GUI/SkillBar/Background/HBoxContainer/AbilityButton2" index="0" groups=[
+"UiButtons",
+]]
+
+[node name="Counter" parent="GUI/SkillBar/Background/HBoxContainer/AbilityButton2/AbilityButton" index="2"]
+margin_bottom = 1.0
+
+[node name="Value" parent="GUI/SkillBar/Background/HBoxContainer/AbilityButton2/AbilityButton/Counter" index="0"]
+custom_fonts/font = SubResource( 2 )
+
+[node name="AbilityButton3" parent="GUI/SkillBar/Background/HBoxContainer" instance=ExtResource( 8 )]
+position = Vector2( 90, 8 )
+scale = Vector2( 0.05, 0.05 )
+
+[node name="AbilityButton" parent="GUI/SkillBar/Background/HBoxContainer/AbilityButton3" index="0" groups=[
+"UiButtons",
+]]
+
+[node name="GcdSweep" parent="GUI/SkillBar/Background/HBoxContainer/AbilityButton3/AbilityButton" index="1"]
+margin_left = 4.0
+margin_top = 1.25995
+margin_right = 4.0
+margin_bottom = 1.25995
+
+[node name="Counter" parent="GUI/SkillBar/Background/HBoxContainer/AbilityButton3/AbilityButton" index="2"]
+margin_bottom = 1.0
+
+[node name="Value" parent="GUI/SkillBar/Background/HBoxContainer/AbilityButton3/AbilityButton/Counter" index="0"]
+mouse_filter = 1
+
+[connection signal="abilityUsed" from="GUI/SkillBar" to="YSort/Hero" method="_on_SkillBar_abilityUsed"]
+
+[editable path="GUI/SkillBar/Background/HBoxContainer/AbilityButton1"]
+[editable path="GUI/SkillBar/Background/HBoxContainer/AbilityButton2"]
+[editable path="GUI/SkillBar/Background/HBoxContainer/AbilityButton3"]
