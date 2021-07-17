@@ -9,6 +9,7 @@ signal target_dead
 # var b = "text"
 
 func player_dead():
+	
 	emit_signal("target_dead")
 	
 	

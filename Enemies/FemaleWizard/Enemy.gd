@@ -39,7 +39,7 @@ func _take_damage(damage):
 
 func _on_HurtBox_area_entered(area):
 	_take_damage(area.damage)
-	if stats.current_health <= 0:
+	if state == DEAD:
 		area.enemy_dead(stats.experience_points)
 
 func _on_Stats_no_health():
@@ -54,6 +54,8 @@ func _physics_process(delta):
 			animation_tree.set("parameters/WALK/blend_position", velocity)
 			animation_tree.set("parameters/ATTACK/blend_position", velocity)
 			animation_tree.set("parameters/DEATH/blend_position", velocity)
+			var hurtbox = $HurtBox/CollisionShape2D
+			hurtbox.disabled = true
 			remove_child(castbarInstance)
 			animation_state.travel("DEATH")
 #			DeadLoop(delta)

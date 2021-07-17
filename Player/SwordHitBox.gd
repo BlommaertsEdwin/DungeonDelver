@@ -11,7 +11,9 @@ func _ready():
 	pass # Replace with function body.
 	
 func enemy_dead(experience_gained):
-	emit_signal("killed_enemy, experience_gained")
+	print("enemy dead")
+	print(experience_gained)
+	emit_signal("killed_enemy",experience_gained)
 
 
 

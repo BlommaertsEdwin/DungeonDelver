@@ -1041,7 +1041,6 @@ parameters/WALK/blend_position = Vector2( -0.440495, 0.569412 )
 [node name="HurtBox" parent="." instance=ExtResource( 3 )]
 
 [node name="Stats" parent="." instance=ExtResource( 5 )]
-max_health = 3
 
 [node name="HitBoxPosition" type="Position2D" parent="."]
 position = Vector2( 0, 6 )
@@ -1083,8 +1082,8 @@ autostart = true
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
-[connection signal="target_dead" from="HitBoxPosition/StaffHitBox" to="PlayerDetectionZone" method="_on_StaffHitBox_target_dead"]
 [connection signal="target_dead" from="HitBoxPosition/StaffHitBox" to="AttackZone" method="_on_StaffHitBox_target_dead"]
+[connection signal="target_dead" from="HitBoxPosition/StaffHitBox" to="PlayerDetectionZone" method="_on_StaffHitBox_target_dead"]
 [connection signal="body_entered" from="AttackZone" to="AttackZone" method="_on_AttackZone_body_entered"]
 [connection signal="body_exited" from="AttackZone" to="AttackZone" method="_on_AttackZone_body_exited"]
 [connection signal="timeout" from="WanderController/Timer" to="WanderController" method="_on_Timer_timeout"]

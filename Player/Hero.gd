@@ -22,12 +22,14 @@ onready var animation_state = animation_tree.get("parameters/playback")
 onready var label = $Label
 onready var stats = PlayerStats
 onready var healthBar = $Healthbar
+onready var xp_bar = "../../GUI/ExperienceBar"
+var agro = false
 
 func _ready():
+	stats.connect("health_increased", self, "health_increased") 
 	stats.connect("no_health", self, "player_death")
-	stats.connect("health_changed", self, "health_changed")
 	animation_tree.active = true
-
+	
 # IMPUT
 func _unhandled_input(event):
 	if event.is_action_pressed("move"):
@@ -48,6 +50,10 @@ func _physics_process(delta):
 			
 # MOVEMENT 
 func MovementLoop(delta):
+	if not agro:
+		PlayerStats.regen()
+	else:
+		PlayerStats.stop_regen()
 	if moving == false:
 		animation_state.travel("IDLE")
 		speed = 0
@@ -67,16 +73,17 @@ func MovementLoop(delta):
 		moving = false
 
 func AttackLoop(_delta):
+	PlayerStats.stop_regen()
 	speed = 0
 	animation_state.travel("ATTACK")
 	
 func DeadLoop(_delta):
+	PlayerStats.stop_regen()
 	speed = 0
+	var collision = $CollisionShape2D
+	collision.disabled = true
 	animation_state.travel("DEATH")
-	
-	
-	
-#	queue_free()
+
 
 func AttackAnimationFinished():
 	state = MOVE
@@ -90,29 +97,29 @@ func _on_HurtBox_body_entered(body):
 	healthBar.reduce_healthbar(stats.max_health, body.damage)
 	body.queue_free()
 	
+func health_increased(health):
+	healthBar.increase_healthbar(stats.max_health, health)
+	
 func player_death():
 	state = DEAD
 
 
 func _on_SwordHitBox_killed_enemy(experience_gained):
-	print("Killed")
 	PlayerStats.experience_pool += experience_gained
 	while PlayerStats.experience_pool >= PlayerStats.experience_required:
 		LevelUp()
 		PlayerStats.experience_pool -= PlayerStats.experience_required
-	print(experience_gained)
-	print(PlayerStats.level)
 	
 func LevelUp():
 	PlayerStats.level += 1
-	# increase skill points
-	# increase stats
-	# increase 
-	pass
-
-
-
 
 func _on_SkillBar_abilityUsed(ability_name):
 	if state != DEAD:
 		state = ATTACK
+		
+func has_agro():
+	agro = true
+	
+func lost_agro():
+	agro = false
+	
