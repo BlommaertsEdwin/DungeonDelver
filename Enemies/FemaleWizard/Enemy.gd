@@ -1,6 +1,5 @@
 extends KinematicBody2D
 onready var stats = $Stats
-onready var health_label = $Label
 enum {
 	IDLE,
 	CHASE,
@@ -32,13 +31,14 @@ onready var healthBar = $Healthbar
 func _ready():
 	animation_tree.active = true
 
-func _take_damage(damage):
+func _take_damage(area):
+	var damage = area.damage
 	stats.take_damage(damage)
+	print(damage)
 	healthBar.reduce_healthbar(stats.max_health, damage)
 
-
 func _on_HurtBox_area_entered(area):
-	_take_damage(area.damage)
+	_take_damage(area)
 	if state == DEAD:
 		area.enemy_dead(stats.experience_points)
 

@@ -10,7 +10,7 @@ var state = MOVE
 # 24 33
 const friction = 10
 var speed = 0
-var max_speed = 400
+var max_speed = 400 setget set_max_speed, get_max_speed
 var acceleration = 150
 var move_direction = 0
 var moving = false
@@ -19,11 +19,17 @@ var movement = Vector2()
 onready var animation_player = $AnimationPlayer
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
-onready var label = $Label
 onready var stats = PlayerStats
 onready var healthBar = $Healthbar
 onready var xp_bar = "../../GUI/ExperienceBar"
 var agro = false
+
+func set_max_speed(new_max_speed):
+	speed = new_max_speed
+	
+func get_max_speed():
+	var new_max_speed = max_speed + ((max_speed / 100) * stats.agility)
+	return new_max_speed
 
 func _ready():
 	stats.connect("health_increased", self, "health_increased") 
@@ -89,31 +95,27 @@ func AttackAnimationFinished():
 	state = MOVE
 
 func _on_HurtBox_area_entered(area):
-	stats.take_damage(area.damage)
-	healthBar.reduce_healthbar(stats.max_health, area.damage)
+	player_takes_damage(area)
 
 func _on_HurtBox_body_entered(body):
-	stats.take_damage(body.damage)
-	healthBar.reduce_healthbar(stats.max_health, body.damage)
+	player_takes_damage(body)
 	body.queue_free()
 	
 func health_increased(health):
 	healthBar.increase_healthbar(stats.max_health, health)
 	
+	
+func player_takes_damage(area):
+	stats.take_damage(area.damage)
+	healthBar.reduce_healthbar(stats.max_health, area.damage)
+	
 func player_death():
 	state = DEAD
 
-
 func _on_SwordHitBox_killed_enemy(experience_gained):
-	PlayerStats.experience_pool += experience_gained
-	while PlayerStats.experience_pool >= PlayerStats.experience_required:
-		LevelUp()
-		PlayerStats.experience_pool -= PlayerStats.experience_required
-	
-func LevelUp():
-	PlayerStats.level += 1
+	PlayerStats.gain_experience(experience_gained)
 
-func _on_SkillBar_abilityUsed(ability_name):
+func _on_SkillBar_abilityUsed(ability_name, ability_cd):
 	if state != DEAD:
 		state = ATTACK
 		

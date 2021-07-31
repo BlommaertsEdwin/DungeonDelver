@@ -2,6 +2,10 @@ extends Node
 
 export var max_health = 10.0
 onready var current_health = max_health setget set_current_health, get_current_health
+export var strength = 5 setget set_strength, get_strength
+export var agility = 5 setget set_agility, get_agility
+export var inteligence = 5 setget set_inteligence, get_inteligence
+export var wisdom = 5 setget set_wisdom, get_wisdom
 signal no_health
 signal health_increased(health)
 signal experience_changed
@@ -34,6 +38,29 @@ func _ready():
 	health_regen_timer.one_shot = false
 	add_child(health_regen_timer)
 	
+func set_strength(new_strength):
+	strength = new_strength
+
+func get_strength():
+	return strength
+	
+func set_agility(new_agility):
+	agility = new_agility
+
+func get_agility():
+	return agility
+
+func set_inteligence(new_inteligence):
+	inteligence = new_inteligence
+
+func get_inteligence():
+	return inteligence
+	
+func set_wisdom(new_wisdom):
+	wisdom = new_wisdom
+
+func get_wisdom():
+	return wisdom
 
 func set_experience(experience):
 	experience_pool += experience
@@ -76,12 +103,18 @@ func stop_regen():
 		health_regen_timer.stop()
 
 func regenerate_health():
-	print("Regenerate Health")
 	if current_health < max_health:
 		var increment = float(max_health/100) * float(health_regen_per_level[level])
 		current_health += increment
 		emit_signal("health_increased", increment)
 		if current_health > max_health:
 			current_health = max_health
-	
-	
+
+func gain_experience(experience_gained):
+	experience_pool += experience_gained
+	while experience_pool >= experience_required:
+		LevelUp()
+		experience_pool -= experience_required
+
+func LevelUp():
+	level += 1

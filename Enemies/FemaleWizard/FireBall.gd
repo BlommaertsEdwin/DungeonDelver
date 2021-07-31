@@ -27,6 +27,5 @@ func self_destruct():
 #func _process(delta):
 #	pass
 
-
 func _on_FireBall_body_entered(_body):
 	queue_free() # Replace with function body.

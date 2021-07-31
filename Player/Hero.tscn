@@ -1022,7 +1022,7 @@ rotation = 1.5708
 position = Vector2( 15, 0 )
 collision_layer = 2
 script = ExtResource( 5 )
-damage = 2
+damage = 2.0
 
 [node name="CollisionShape2D" parent="HitBoxPivot/SwordHitBox" index="0"]
 position = Vector2( 34.5, 0 )

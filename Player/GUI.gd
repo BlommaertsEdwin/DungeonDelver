@@ -1,7 +1,12 @@
 extends Control
 onready var buttons_path = "Background/HBoxContainer"
-var loadedSkills = {"AbilityButton1": "Slash", "AbilityButton2": "ShieldWall", "AbilityButton3": "ShieldWall"}
-signal abilityUsed(ability_name)
+var loadedSkills = {
+	"AbilityButton1": {"name": "Slash", "cooldown": 1}, 
+	"AbilityButton2": {"name": "ShieldWall", "cooldown": 1},
+	"AbilityButton3": {"name": "ShieldWall", "cooldown": 1}
+	}
+	
+signal abilityUsed(ability_name, ability_cd)
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -17,13 +22,13 @@ func _ready():
 			if MainButton != OtherButton and OtherButton.on_the_gcd:
 				MainButton.connect("gcd_triggered", OtherButton, "gcd_triggered")
 			
-		
 func LoadSkills():
 	pass
 
 func SelectButton(PressedButton):
-	var action = loadedSkills[PressedButton]
-	emit_signal("abilityUsed", action)
+	var action = loadedSkills[PressedButton]['name']
+	var cooldown = loadedSkills[PressedButton]['cooldown']
+	emit_signal("abilityUsed", action, cooldown)
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
