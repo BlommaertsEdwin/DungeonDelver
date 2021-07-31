@@ -28,7 +28,11 @@ func set_experiencebar():
 	xp_bar.value = PlayerStats.experience_pool
 	
 
-	
+func _unhandled_input(event):
+	if event.is_action_pressed("charstats") and !$PopupDialog.visible:
+		$PopupDialog.popup()
+	elif event.is_action_pressed("charstats"):
+		$PopupDialog.hide()
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

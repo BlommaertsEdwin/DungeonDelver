@@ -117,7 +117,11 @@ func _on_SwordHitBox_killed_enemy(experience_gained):
 
 func _on_SkillBar_abilityUsed(ability_name, ability_cd):
 	if state != DEAD:
-		state = ATTACK
+		if ability_name == 'Slash':
+			state = ATTACK
+		elif ability_name == 'Buff':
+			stats.strength += 100
+			
 		
 func has_agro():
 	agro = true
