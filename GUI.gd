@@ -12,29 +12,19 @@ func _ready():
 	set_experiencebar()
 	stats.connect("experience_changed", self, "experience_changed")
 	stats.connect("level_changed", self, "level_changed")
-	
+
 func experience_changed():
-	print("SETTING XP")
 	set_experiencebar()
-	
+
 func level_changed():
 	pass
-	
 
 func set_experiencebar():
-	print(PlayerStats.experience_required)
-	print(PlayerStats.experience_pool)
 	xp_bar.max_value = PlayerStats.experience_required
 	xp_bar.value = PlayerStats.experience_pool
-	
 
 func _unhandled_input(event):
-	if event.is_action_pressed("charstats") and !$PopupDialog.visible:
-		$PopupDialog.popup()
+	if event.is_action_pressed("charstats") and !$CharStats.visible:
+		$CharStats.popup()
 	elif event.is_action_pressed("charstats"):
-		$PopupDialog.hide()
-
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+		$CharStats.hide()

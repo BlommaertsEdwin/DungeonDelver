@@ -17,4 +17,4 @@ func _ready():
 
 
 func _on_PopupDialog_about_to_show():
-	$Label.text = "-strength: %s \n-agility: %s \n-inteligence: %s \n-wisdom %s" % [PlayerStats.strength, PlayerStats.agility, PlayerStats.inteligence, PlayerStats.wisdom]
+	$Label.text = "-strength: %s \n-agility: %s \n-inteligence: %s \n-wisdom %s\n------------\n\nhealth:%s\\%s\nmanapool:%s\\%s" % [PlayerStats.strength, PlayerStats.agility, PlayerStats.inteligence, PlayerStats.wisdom, PlayerStats.current_health, PlayerStats.max_health, PlayerStats.current_mana, PlayerStats.max_mana]

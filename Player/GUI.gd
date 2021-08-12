@@ -2,7 +2,7 @@ extends Control
 onready var buttons_path = "Background/HBoxContainer"
 var loadedSkills = {
 	"AbilityButton1": {"name": "Slash", "cooldown": 1}, 
-	"AbilityButton2": {"name": "Buff", "cooldown": 1},
+	"AbilityButton2": {"name": "Buff", "cooldown": 1, },
 	"AbilityButton3": {"name": "ShieldWall", "cooldown": 1}
 	}
 	

@@ -34,7 +34,6 @@ func _ready():
 func _take_damage(area):
 	var damage = area.damage
 	stats.take_damage(damage)
-	print(damage)
 	healthBar.reduce_healthbar(stats.max_health, damage)
 
 func _on_HurtBox_area_entered(area):

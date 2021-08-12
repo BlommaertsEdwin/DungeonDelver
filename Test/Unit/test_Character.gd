@@ -60,6 +60,17 @@ func test_8_reduce_enemy_health():
 	_enemy._take_damage(_fireball)
 	assert_lt(_enemy.stats.current_health, starting_health)
 
-#func test_9_stength_increases_damage():
-#	_char.stats.strength = 1
-#
+func test_9_set_max_mana():
+	var max_mana = _char.stats.max_mana
+	var current_mana = _char.stats.current_mana
+	var calc_max_mana = 10.0 + ((10.0 / 100.0) * _char.stats.inteligence)
+	assert_eq(max_mana, calc_max_mana)
+	assert_eq(max_mana, current_mana)
+	
+func test_10_spend_mana():
+	var mana_to_spend = 5
+	_char.stats.spend_mana(mana_to_spend)
+	var max_mana = _char.stats.max_mana
+	var current_mana = _char.stats.current_mana
+	assert_eq(current_mana, max_mana - mana_to_spend)
+	

@@ -1,6 +1,6 @@
 extends TextureButton
 onready var time_label = $Counter/Value
-export var cooldown = 3.0 setget set_cooldown, get_cooldown
+export var cooldown = 3 setget set_cooldown, get_cooldown
 export var gcd = 1.0
 export var on_the_gcd = true
 signal gcd_triggered
@@ -24,7 +24,6 @@ func _ready():
 
 func _process(delta):
 	time_label.text = "%3.1f" % $Sweep/Timer.time_left
-	print(get_cooldown())
 	$Sweep.value = ($Sweep/Timer.time_left / get_cooldown()) * 100
 	$GcdSweep.value = ($GcdSweep/GcdTimer.time_left / gcd) * 100
 

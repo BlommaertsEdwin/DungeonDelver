@@ -21,6 +21,7 @@ onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
 onready var stats = PlayerStats
 onready var healthBar = $Healthbar
+onready var manaBar = $Manabar
 onready var xp_bar = "../../GUI/ExperienceBar"
 var agro = false
 
@@ -28,11 +29,12 @@ func set_max_speed(new_max_speed):
 	speed = new_max_speed
 	
 func get_max_speed():
-	var new_max_speed = max_speed + ((max_speed / 100) * stats.agility)
+	var new_max_speed = max_speed + ((max_speed / 100.0) * stats.agility)
 	return new_max_speed
 
 func _ready():
 	stats.connect("health_increased", self, "health_increased") 
+	stats.connect("mana_increased", self, "mana_increased")
 	stats.connect("no_health", self, "player_death")
 	animation_tree.active = true
 	
@@ -104,6 +106,8 @@ func _on_HurtBox_body_entered(body):
 func health_increased(health):
 	healthBar.increase_healthbar(stats.max_health, health)
 	
+func mana_increased(mana):
+	manaBar.increase_manabar(stats.get_max_mana(), mana)
 	
 func player_takes_damage(area):
 	stats.take_damage(area.damage)
@@ -120,12 +124,24 @@ func _on_SkillBar_abilityUsed(ability_name, ability_cd):
 		if ability_name == 'Slash':
 			state = ATTACK
 		elif ability_name == 'Buff':
-			stats.strength += 100
-			
-		
+			ability_strengthbuff()
+
 func has_agro():
 	agro = true
 	
 func lost_agro():
 	agro = false
 	
+func spend_mana(mana):
+	var allowed = stats.spend_mana(mana)
+	if allowed:
+		manaBar.reduce_manabar(stats.max_mana, mana)
+	return allowed
+
+func ability_strengthbuff():
+	if spend_mana(5):
+		stats.strength += 100
+		$Buffbar/HBoxContainer/Node2D/Strengthbuff.visible = true
+		yield(get_tree().create_timer(3), "timeout")
+		stats.strength -= 100
+		$Buffbar/HBoxContainer/Node2D/Strengthbuff.visible = false

@@ -5,8 +5,12 @@ onready var line = $Line2D
 
 func reduce_manabar(max_mana, mana_used):
 	var mana_portion = float(mana_used)/float(max_mana)
+	print("====start====")
+	print(mana_portion)
 	var mana_reduced = bar_length*mana_portion
+	print(mana_reduced)
 	line.points[1].x -= mana_reduced
+	print(line.points[1].x)
 	if line.points[1].x <= 0:
 		line.points[1].x = 0
 		
