@@ -43,7 +43,7 @@
 
 [sub_resource type="BitmapFont" id=2]
 
-[node name="DungeonMap" type="Node2D"]
+[node name="DungeonDelver" type="Node2D"]
 position = Vector2( 1, 0 )
 script = ExtResource( 2 )
 
