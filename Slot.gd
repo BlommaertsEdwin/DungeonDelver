@@ -1,5 +1,11 @@
 extends Panel
 
+enum slot_categories {HEAD, NECK, SHOULDER, CHEST, TROUSER, 
+BOOTS, WEAPON_LEFT, WEAPON_RIGHT, CLOAK, INVENTORY}
+
+var slot_category = null
+
+
 var default_tex = preload("res://Sprites/item_slot_default_background.png")
 var empty_tex = preload("res://Sprites/item_slot_empty_background.png")
 
