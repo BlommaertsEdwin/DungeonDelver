@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tree Branch.png-50208dc4508d6897eabd26619ccb6dd9.stex"
+path="res://.import/Barbarian Bracers.png-71103000edb43c57cf16a6d2317a4624.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://item_icons/Tree Branch.png"
-dest_files=[ "res://.import/Tree Branch.png-50208dc4508d6897eabd26619ccb6dd9.stex" ]
+source_file="res://CharacterSpriteSheets/Barbarian Bracers.png"
+dest_files=[ "res://.import/Barbarian Bracers.png-71103000edb43c57cf16a6d2317a4624.stex" ]
 
 [params]
 

@@ -12,10 +12,72 @@
     "Description": "It smells like medicine."
   },
   "Iron Sword": {
-    "ItemCategory": "WEAPON_LEFT",
+    "ItemCategory": "WEAPON_RIGHT",
     "ItemAttack": 3,
     "ItemSpeed": 0.75, 
     "StackSize": 1,
     "Description": "Quite a rusty sword, but should be able to get the job done."
+  },
+  "Barbarian Shield": {
+    "ItemCategory": "WEAPON_LEFT",
+    "ItemAttack": 0,
+    "ItemSpeed": 0, 
+    "StackSize": 1,
+    "Description": "Wooden shield with a red windmill on a yellow field painted on it."
+  },
+  "Barbarian Helmet": {
+    "ItemCategory": "HEAD",
+    "Armour": 3, 
+    "StackSize": 1,
+    "Description": "Rudementary leather helmet with two animal horns protruding."
+  },
+  "Barbarian Shoulders": {
+    "ItemCategory": "SHOULDERS",
+    "Armour": 3, 
+    "StackSize": 1,
+    "Description": "Rudementary leather shoulders, slightly oversized and keep slipping."
+  },
+  "Barbarian Chest": {
+    "ItemCategory": "CHEST",
+    "Armour": 3, 
+    "StackSize": 1,
+    "Description": "Rudementary leather chest, snug fit, smells of wet grass."
+  },
+  "Barbarian Trousers": {
+    "ItemCategory": "TROUSERS",
+    "Armour": 3, 
+    "StackSize": 1,
+    "Description": "Rudementary leather trousers, they squeak when wet."
+  },
+  "Barbarian Boots": {
+    "ItemCategory": "BOOTS",
+    "Armour": 3, 
+    "StackSize": 1,
+    "Description": "Rudementary leather boots, but extremely comfortable."
+  },
+  "Barbarian Bracers": {
+    "ItemCategory": "BRACERS",
+    "Armour": 3, 
+    "StackSize": 1,
+    "Description": "Rudementary leather bracers, useful but hot and sweaty."
+  },
+  "Barbarian Belt": {
+    "ItemCategory": "BELT",
+    "Armour": 3, 
+    "StackSize": 1,
+    "Description": "Rudementary leather belt, perfect for keeping up the trousers."
+  },
+  "Barbarian Back": {
+    "ItemCategory": "BACK",
+    "Armour": 3, 
+
+    "StackSize": 1,
+    "Description": "Rudementary leather cloak, very warm, but does smell of wet dog when it gets wet."
+  },
+  "Barbarian Gloves": {
+    "ItemCategory": "GLOVES",
+    "Armour": 3, 
+    "StackSize": 1,
+    "Description": "Leather gloves, stitched together with fine thread."
   },
 }

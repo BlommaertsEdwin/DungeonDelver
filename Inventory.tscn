@@ -1,22 +1,26 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sprites/item_slot_default_background.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/default_inventory_background.png" type="Texture" id=2]
 [ext_resource path="res://Slot.gd" type="Script" id=3]
 [ext_resource path="res://Inventory.gd" type="Script" id=4]
-[ext_resource path="res://Sprites/NakedGuy.png" type="Texture" id=5]
+[ext_resource path="res://PaperDoll.gd" type="Script" id=6]
+[ext_resource path="res://fonts/source-code-pro/SourceCodePro.tres" type="DynamicFont" id=10]
+[ext_resource path="res://CharacterSpriteSheets/PaperDollSpriteSheet.png" type="Texture" id=15]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 18, 18 )
 
 [node name="Inventory" type="Node2D"]
+position = Vector2( -39.6427, 15.5739 )
 script = ExtResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_top = 6.0
-margin_right = 305.0
-margin_bottom = 125.0
+margin_left = -8.0
+margin_top = -7.0
+margin_right = 352.0
+margin_bottom = 150.0
 texture = ExtResource( 2 )
 expand = true
 __meta__ = {
@@ -24,10 +28,10 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="."]
-margin_left = 185.926
-margin_top = 28.1101
-margin_right = 298.926
-margin_bottom = 122.11
+margin_left = 228.391
+margin_top = 28.5306
+margin_right = 341.391
+margin_bottom = 122.531
 custom_constants/vseparation = 1
 custom_constants/hseparation = 1
 columns = 6
@@ -294,23 +298,119 @@ rect_min_size = Vector2( 18, 18 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = 81.7616
-margin_top = 42.0115
-margin_right = 150.762
-margin_bottom = 112.011
-texture = ExtResource( 5 )
+[node name="PaperDoll" type="TextureRect" parent="."]
+margin_left = 69.989
+margin_top = 38.2275
+margin_right = 153.989
+margin_bottom = 122.227
 expand = true
 stretch_mode = 6
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DollSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( 16, -8 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 1
+texture = ExtResource( 15 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 17, 135, 30, 55 )
+
+[node name="ChestSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( 16, -8 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 17, 135, 30, 55 )
+
+[node name="ShoulderSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( 16, -8 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 17, 135, 30, 55 )
+
+[node name="HeadSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( 16, -8 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 17, 135, 30, 55 )
+
+[node name="TrouserSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( 16, -8 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 17, 135, 30, 55 )
+
+[node name="BootSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( 16, -8 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 17, 135, 30, 55 )
+
+[node name="BracerSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( 16, -8 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 17, 135, 30, 55 )
+
+[node name="GloveSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( 16, -8 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 17, 135, 30, 55 )
+
+[node name="BeltSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( 16, -8 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 17, 135, 30, 55 )
+
+[node name="BackSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( 16, -8 )
+scale = Vector2( 1.6, 1.6 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 17, 135, 30, 55 )
+
+[node name="WeaponSlotRightSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( 16, 33.2973 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 3
+centered = false
+region_enabled = true
+region_rect = Rect2( 14, 672, 35, 24 )
+
+[node name="WeaponSlotLeftSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( 11, 33 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 36, 414, 16, 27 )
+
 [node name="EquipSlotLeft" type="GridContainer" parent="."]
-margin_left = 72.0
-margin_top = 27.0
-margin_right = 90.0
-margin_bottom = 121.0
+margin_left = 63.591
+margin_top = 27.4204
+margin_right = 81.591
+margin_bottom = 121.42
 custom_constants/vseparation = 1
 custom_constants/hseparation = 1
 __meta__ = {
@@ -357,10 +457,10 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="EquipSlotRight" type="GridContainer" parent="."]
-margin_left = 142.635
-margin_top = 27.8409
-margin_right = 160.635
-margin_bottom = 121.841
+margin_left = 138.431
+margin_top = 28.2613
+margin_right = 156.431
+margin_bottom = 122.261
 custom_constants/vseparation = 1
 custom_constants/hseparation = 1
 __meta__ = {
@@ -397,3 +497,40 @@ margin_bottom = 75.0
 rect_min_size = Vector2( 18, 18 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
+
+[node name="EquipSlotBottom" type="GridContainer" parent="."]
+margin_left = 90.8919
+margin_top = 122.73
+margin_right = 127.892
+margin_bottom = 140.73
+custom_constants/vseparation = 1
+custom_constants/hseparation = 1
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="Panel" parent="EquipSlotBottom"]
+margin_right = 18.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Slot2" type="Panel" parent="EquipSlotBottom"]
+margin_left = 19.0
+margin_right = 37.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="StatsLabel" type="Label" parent="."]
+margin_left = 158.93
+margin_top = 30.2723
+margin_right = 198.93
+margin_bottom = 44.2723
+custom_fonts/font = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

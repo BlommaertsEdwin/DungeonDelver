@@ -1,7 +1,7 @@
 extends Panel
 
-enum slot_categories {HEAD, NECK, SHOULDER, CHEST, TROUSER, 
-BOOTS, WEAPON_LEFT, WEAPON_RIGHT, CLOAK, INVENTORY}
+enum slot_categories {HEAD, BELT, SHOULDERS, CHEST, TROUSERS, 
+BOOTS, WEAPON_LEFT, WEAPON_RIGHT, BRACERS, BACK, INVENTORY, GLOVES}
 
 var slot_category = null
 
@@ -44,7 +44,7 @@ func pickFromSlot():
 	
 func putIntoSlot(new_item):
 	item = new_item
-	item.position = Vector2(0,0)
+	item.position = Vector2(1,1)
 	var inventoryNode = find_parent('Inventory')
 	inventoryNode.remove_child(item)
 	add_child(item)
