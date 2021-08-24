@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Download17043.png" type="Texture" id=1]
 [ext_resource path="res://Player/Hero.gd" type="Script" id=2]
@@ -9,6 +9,11 @@
 [ext_resource path="res://Healthbar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Manabar.gd" type="Script" id=8]
 [ext_resource path="res://all-for-one.png" type="Texture" id=9]
+[ext_resource path="res://CharacterSpriteSheets/PaperDollSpriteSheet.png" type="Texture" id=10]
+[ext_resource path="res://CharacterSpriteSheets/Barbarian Trousers.png" type="Texture" id=11]
+[ext_resource path="res://CharacterSpriteSheets/Barbarian Helmet.png" type="Texture" id=12]
+[ext_resource path="res://CharacterSpriteSheets/Barbarian Shoulders.png" type="Texture" id=13]
+[ext_resource path="res://CharacterSpriteSheets/Barbarian Chest.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=1]
 length = 0.55
@@ -411,8 +416,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=6]
-length = 0.1
-loop = true
+length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -464,7 +468,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=7]
 length = 0.1
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -516,7 +519,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=8]
 length = 0.1
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -568,7 +570,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=9]
 length = 0.1
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -974,10 +975,105 @@ collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 1 )
 hframes = 6
+vframes = 4
+frame = 12
 region_enabled = true
-region_rect = Rect2( 0, 1280, 384, 64 )
+region_rect = Rect2( 0, 1344, 1152, 768 )
+
+[node name="CharacterSprite" type="Sprite" parent="."]
+z_index = 1
+texture = ExtResource( 10 )
+hframes = 9
+vframes = 4
+frame = 19
+region_enabled = true
+region_rect = Rect2( 0, 512, 576, 254 )
+
+[node name="HeadSlotSprite" type="Sprite" parent="."]
+z_index = 2
+texture = ExtResource( 12 )
+hframes = 9
+vframes = 4
+frame = 19
+region_enabled = true
+region_rect = Rect2( 0, 512, 576, 254 )
+
+[node name="ShoulderSlotSprite" type="Sprite" parent="."]
+z_index = 2
+texture = ExtResource( 13 )
+hframes = 9
+vframes = 4
+frame = 19
+region_enabled = true
+region_rect = Rect2( 0, 512, 576, 254 )
+
+[node name="ChestSlotSprite" type="Sprite" parent="."]
+z_index = 2
+texture = ExtResource( 14 )
+hframes = 9
+vframes = 4
+frame = 19
+region_enabled = true
+region_rect = Rect2( 0, 512, 576, 254 )
+
+[node name="TrouserSlotSprite" type="Sprite" parent="."]
+z_index = 2
+texture = ExtResource( 11 )
+hframes = 9
+vframes = 4
+frame = 19
+region_enabled = true
+region_rect = Rect2( 0, 512, 576, 254 )
+
+[node name="BootSlotSprite" type="Sprite" parent="."]
+visible = false
+z_index = 5
+texture = ExtResource( 10 )
+
+[node name="BracerSlotSprite" type="Sprite" parent="."]
+visible = false
+hframes = 9
+vframes = 4
+frame = 19
+region_enabled = true
+region_rect = Rect2( 0, 512, 576, 254 )
+
+[node name="GloveSlotSprite" type="Sprite" parent="."]
+visible = false
+z_index = 5
+texture = ExtResource( 10 )
+
+[node name="BeltSlotSprite" type="Sprite" parent="."]
+visible = false
+hframes = 9
+vframes = 4
+frame = 19
+region_enabled = true
+region_rect = Rect2( 0, 512, 576, 254 )
+
+[node name="BackSlotSprite" type="Sprite" parent="."]
+visible = false
+hframes = 9
+vframes = 4
+frame = 19
+region_enabled = true
+region_rect = Rect2( 0, 512, 576, 254 )
+
+[node name="WeaponSlotRightSprite" type="Sprite" parent="."]
+visible = false
+z_index = 5
+texture = ExtResource( 10 )
+
+[node name="WeaponSlotLeftSprite" type="Sprite" parent="."]
+visible = false
+hframes = 9
+vframes = 4
+frame = 19
+region_enabled = true
+region_rect = Rect2( 0, 512, 576, 254 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/AttackDown = SubResource( 1 )

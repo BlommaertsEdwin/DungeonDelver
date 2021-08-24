@@ -24,7 +24,9 @@ func set_experiencebar():
 	xp_bar.value = PlayerStats.experience_pool
 
 func _unhandled_input(event):
-	if event.is_action_pressed("charstats") and !$CharStats.visible:
-		$CharStats.popup()
-	elif event.is_action_pressed("charstats"):
-		$CharStats.hide()
+	if event.is_action_pressed("inventory") and !$Inventory.visible:
+		print("pressed invisible")
+		$Inventory.visible = true
+	elif event.is_action_pressed("inventory") and $Inventory.visible:
+		print("pressed visible")
+		$Inventory.visible = false

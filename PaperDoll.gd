@@ -1,4 +1,6 @@
 extends TextureRect
+signal removed_from_equipment_slot(category)
+signal added_to_equipment_slot(category, item_name)
 
 
 # Declare member variables here. Examples:
@@ -7,9 +9,13 @@ extends TextureRect
 const SlotClass = preload("res://Slot.gd")
 
 
+func set(texture, value):
+	texture = value
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$DollSprite.texture = load("res://CharacterSpriteSheets/PaperDollSpriteSheet.png")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,6 +46,7 @@ func _add_to_weaponrightslot(new_item):
 	$WeaponSlotRightSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
 
 func remove_from_slot(slot_category):
+	emit_signal("removed_from_equipment_slot", slot_category)
 	if slot_category == SlotClass.slot_categories.HEAD:
 		$HeadSlotSprite.texture = null
 	elif slot_category == SlotClass.slot_categories.SHOULDERS:
@@ -64,6 +71,7 @@ func remove_from_slot(slot_category):
 		$WeaponSlotLeftSprite.texture = null
 	
 func add_to_slot(slot_category, item):
+	emit_signal("added_to_equipment_slot", slot_category, item)
 	if slot_category == SlotClass.slot_categories.HEAD:
 		_add_to_headslot(item)
 	elif slot_category == SlotClass.slot_categories.SHOULDERS:

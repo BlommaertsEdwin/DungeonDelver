@@ -6,6 +6,7 @@ onready var equip_slots_right = $EquipSlotRight
 onready var equip_slot_bottom = $EquipSlotBottom
 var holding_item = null
 
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -14,8 +15,6 @@ var holding_item = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$StatsLabel.text = "-strength: %s \n-agility: %s \n-inteligence: %s \n-wisdom %s\n------------\n\nhealth:%s\\%s\nmanapool:%s\\%s" % [PlayerStats.strength, PlayerStats.agility, PlayerStats.inteligence, PlayerStats.wisdom, PlayerStats.current_health, PlayerStats.max_health, PlayerStats.current_mana, PlayerStats.max_mana]
-
-	
 	for inventory_slot in inventory_slots.get_children():
 		inventory_slot.connect("gui_input", self, "slot_gui_input", [inventory_slot])
 		inventory_slot.slot_category = SlotClass.slot_categories.INVENTORY

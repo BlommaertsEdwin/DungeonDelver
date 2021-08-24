@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Sprites/item_slot_default_background.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/default_inventory_background.png" type="Texture" id=2]
 [ext_resource path="res://Slot.gd" type="Script" id=3]
 [ext_resource path="res://Inventory.gd" type="Script" id=4]
+[ext_resource path="res://CharacterSpriteSheets/Barbarian Chest.png" type="Texture" id=5]
 [ext_resource path="res://PaperDoll.gd" type="Script" id=6]
 [ext_resource path="res://fonts/source-code-pro/SourceCodePro.tres" type="DynamicFont" id=10]
 [ext_resource path="res://CharacterSpriteSheets/PaperDollSpriteSheet.png" type="Texture" id=15]
@@ -323,6 +324,7 @@ region_rect = Rect2( 17, 135, 30, 55 )
 position = Vector2( 16, -8 )
 scale = Vector2( 1.6, 1.6 )
 z_index = 2
+texture = ExtResource( 5 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 17, 135, 30, 55 )
@@ -534,3 +536,6 @@ custom_fonts/font = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="added_to_equipment_slot" from="PaperDoll" to="." method="_on_PaperDoll_added_to_equipment_slot"]
+[connection signal="removed_from_equipment_slot" from="PaperDoll" to="." method="_on_PaperDoll_removed_from_equipment_slot"]

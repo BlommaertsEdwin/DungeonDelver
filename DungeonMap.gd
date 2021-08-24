@@ -8,7 +8,7 @@ const friction = 10
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+#func _ready():
 #	var troll = load("res://Enemies/MonsterTroll.tscn").instance()
 #	troll.set_position(Vector2(5300, 7955))
 #	add_child(troll)
@@ -18,8 +18,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
-	pass
-
-
-func _on_PopupDialog_about_to_show():
-	pass # Replace with function body.
+#	pass

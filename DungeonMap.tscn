@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Player/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://DungeonMap.gd" type="Script" id=2]
@@ -10,11 +10,11 @@
 [ext_resource path="res://AbilityButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player/GUI.gd" type="Script" id=9]
 [ext_resource path="res://ExperienceBar.tscn" type="PackedScene" id=10]
-[ext_resource path="res://PopupDialog.gd" type="Script" id=11]
 [ext_resource path="res://all-for-one.png" type="Texture" id=12]
 [ext_resource path="res://GUI.gd" type="Script" id=13]
 [ext_resource path="res://armor-upgrade.png" type="Texture" id=14]
 [ext_resource path="res://fonts/poco/Poco.tres" type="DynamicFont" id=15]
+[ext_resource path="res://Inventory.tscn" type="PackedScene" id=16]
 
 [sub_resource type="TileSet" id=1]
 0/name = "0x72_16x16DungeonTileset.v3.png 0"
@@ -40,6 +40,13 @@
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
+
+[sub_resource type="Animation" id=5]
+resource_name = "Test"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
 [sub_resource type="BitmapFont" id=2]
 
@@ -67,6 +74,19 @@ tile_data = PoolIntArray( -851967, 0, 65537, -786432, 0, 65537, -786431, 0, 6553
 position = Vector2( 132.143, -124.592 )
 
 [node name="Hero" parent="YSort" instance=ExtResource( 1 )]
+
+[node name="Sprite" parent="YSort/Hero" index="1"]
+frame = 12
+
+[node name="AnimationPlayer" parent="YSort/Hero" index="2"]
+anims/Test = SubResource( 5 )
+
+[node name="AnimationTree" parent="YSort/Hero" index="4"]
+parameters/playback = SubResource( 3 )
+parameters/ATTACK/1/playback = SubResource( 4 )
+
+[node name="HitBoxPivot" parent="YSort/Hero" index="6"]
+rotation = 1.5708
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Hero"]
 remote_path = NodePath("../../../Camera2D")
@@ -178,28 +198,21 @@ margin_bottom = 1.25995
 [node name="Value" parent="GUI/SkillBar/Background/HBoxContainer/AbilityButton3/AbilityButton/Counter" index="0"]
 mouse_filter = 1
 
-[node name="CharStats" type="PopupDialog" parent="GUI"]
-margin_left = -297.0
-margin_top = -173.0
-margin_right = -77.0
-margin_bottom = 25.0
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="GUI/CharStats"]
-margin_left = 15.7145
-margin_top = 16.8369
-margin_right = 55.7145
-margin_bottom = 30.8369
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Inventory" parent="GUI" instance=ExtResource( 16 )]
+visible = false
+position = Vector2( -34.5974, 22.3011 )
+z_index = 2
 
 [connection signal="abilityUsed" from="GUI/SkillBar" to="YSort/Hero" method="_on_SkillBar_abilityUsed"]
-[connection signal="about_to_show" from="GUI/CharStats" to="GUI/CharStats" method="_on_PopupDialog_about_to_show"]
+[connection signal="added_to_equipment_slot" from="GUI/Inventory/PaperDoll" to="YSort/Hero" method="_on_PaperDoll_added_to_equipment_slot"]
+[connection signal="removed_from_equipment_slot" from="GUI/Inventory/PaperDoll" to="YSort/Hero" method="_on_PaperDoll_removed_from_equipment_slot"]
 
+[editable path="YSort/Hero"]
+[editable path="YSort/Hero/HurtBox"]
+[editable path="YSort/Hero/HitBoxPivot/SwordHitBox"]
+[editable path="YSort/Hero/Healthbar"]
+[editable path="YSort/Hero/Manabar"]
 [editable path="GUI/SkillBar/Background/HBoxContainer/AbilityButton1"]
 [editable path="GUI/SkillBar/Background/HBoxContainer/AbilityButton2"]
 [editable path="GUI/SkillBar/Background/HBoxContainer/AbilityButton3"]
+[editable path="GUI/Inventory"]
