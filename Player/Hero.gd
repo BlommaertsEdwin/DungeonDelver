@@ -179,11 +179,48 @@ func _add_to_weaponrightslot(new_item):
 
 func _on_PaperDoll_added_to_equipment_slot(category, new_item):
 	if SlotClass.slot_categories.HEAD == category:
-		$Sprite2.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
-
+		$HeadSlotSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
+	if SlotClass.slot_categories.SHOULDERS == category:
+		$ShoulderSlotSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
+	if SlotClass.slot_categories.CHEST == category:
+		$ChestSlotSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
+	if SlotClass.slot_categories.TROUSERS == category:
+		$TrouserSlotSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
+	if SlotClass.slot_categories.BOOTS == category:
+		$BootSlotSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
+	if SlotClass.slot_categories.BRACERS == category:
+		$BracerSlotSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
+	if SlotClass.slot_categories.GLOVES == category:
+		$GlovesSlotSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
+	if SlotClass.slot_categories.BELT == category:
+		$BeltSlotSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
+	if SlotClass.slot_categories.BACK == category:
+		$BackSlotSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
+	if SlotClass.slot_categories.WEAPON_RIGHT == category:
+		$WeaponSlotLeftSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
+	if SlotClass.slot_categories.WEAPON_LEFT == category:
+		$WeaponSlotRightSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name +".png")
 
 func _on_PaperDoll_removed_from_equipment_slot(category):
-	print("REMOVE",category)
 	if SlotClass.slot_categories.HEAD == category:
-		$Sprite2.texture = null
-
+		$HeadSlotSprite.texture = null
+	if SlotClass.slot_categories.SHOULDERS == category:
+		$ShoulderSlotSprite.texture = null
+	if SlotClass.slot_categories.CHEST == category:
+		$ChestSlotSprite.texture = null
+	if SlotClass.slot_categories.TROUSERS == category:
+		$TrouserSlotSprite.texture = null
+	if SlotClass.slot_categories.BOOTS == category:
+		$BootSlotSprite.texture = null
+	if SlotClass.slot_categories.BRACERS == category:
+		$BracerSlotSprite.texture = null
+	if SlotClass.slot_categories.GLOVES == category:
+		$GlovesSlotSprite.texture = null
+	if SlotClass.slot_categories.BELT == category:
+		$BeltSlotSprite.texture = null
+	if SlotClass.slot_categories.BACK == category:
+		$BackSlotSprite.texture = null
+	if SlotClass.slot_categories.WEAPON_RIGHT == category:
+		$WeaponSlotLeftSprite.texture = null
+	if SlotClass.slot_categories.WEAPON_LEFT == category:
+		$WeaponSlotRightSprite.texture = null

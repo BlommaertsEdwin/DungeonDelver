@@ -41,14 +41,14 @@
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "Test"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=3]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
-[sub_resource type="BitmapFont" id=2]
+[sub_resource type="BitmapFont" id=5]
 
 [node name="DungeonDelver" type="Node2D"]
 position = Vector2( 1, 0 )
@@ -74,24 +74,20 @@ tile_data = PoolIntArray( -851967, 0, 65537, -786432, 0, 65537, -786431, 0, 6553
 position = Vector2( 132.143, -124.592 )
 
 [node name="Hero" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 82.7599, 43.7509 )
 
-[node name="Sprite" parent="YSort/Hero" index="1"]
-frame = 12
+[node name="AnimationPlayer" parent="YSort/Hero" index="13"]
+anims/Test = SubResource( 2 )
 
-[node name="AnimationPlayer" parent="YSort/Hero" index="2"]
-anims/Test = SubResource( 5 )
-
-[node name="AnimationTree" parent="YSort/Hero" index="4"]
+[node name="AnimationTree" parent="YSort/Hero" index="15"]
 parameters/playback = SubResource( 3 )
 parameters/ATTACK/1/playback = SubResource( 4 )
-
-[node name="HitBoxPivot" parent="YSort/Hero" index="6"]
-rotation = 1.5708
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Hero"]
 remote_path = NodePath("../../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 82.7599, 43.7509 )
 current = true
 process_mode = 0
 smoothing_enabled = true
@@ -178,7 +174,7 @@ cooldown = 10
 on_the_gcd = false
 
 [node name="Value" parent="GUI/SkillBar/Background/HBoxContainer/AbilityButton2/AbilityButton/Counter" index="0"]
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 
 [node name="AbilityButton3" parent="GUI/SkillBar/Background/HBoxContainer" instance=ExtResource( 8 )]
 position = Vector2( 90, 8 )
@@ -200,8 +196,11 @@ mouse_filter = 1
 
 [node name="Inventory" parent="GUI" instance=ExtResource( 16 )]
 visible = false
-position = Vector2( -34.5974, 22.3011 )
+position = Vector2( -47.3331, 9.56547 )
 z_index = 2
+
+[node name="ChestSlotSprite" parent="GUI/Inventory/PaperDoll" index="1"]
+texture = null
 
 [connection signal="abilityUsed" from="GUI/SkillBar" to="YSort/Hero" method="_on_SkillBar_abilityUsed"]
 [connection signal="added_to_equipment_slot" from="GUI/Inventory/PaperDoll" to="YSort/Hero" method="_on_PaperDoll_added_to_equipment_slot"]
