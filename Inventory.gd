@@ -1,5 +1,6 @@
 extends Node2D
 const SlotClass = preload("res://Slot.gd")
+const ItemClass = preload("res://Items.tscn")
 onready var inventory_slots = $GridContainer
 onready var equip_slots_left = $EquipSlotLeft
 onready var equip_slots_right = $EquipSlotRight
@@ -34,12 +35,8 @@ func _ready():
 	equip_slots[7].slot_category = SlotClass.slot_categories.BRACERS
 	equip_slots[8].slot_category = SlotClass.slot_categories.GLOVES
 	# BOTTOM
-	equip_slots[9].slot_category = SlotClass.slot_categories.WEAPON_LEFT
-	equip_slots[10].slot_category = SlotClass.slot_categories.WEAPON_RIGHT
-	
-#func _update_paper_doll(category):
-#	holding_item
-	
+	equip_slots[9].slot_category = SlotClass.slot_categories.WEAPON_RIGHT
+	equip_slots[10].slot_category = SlotClass.slot_categories.WEAPON_LEFT
 		
 func _is_able_to_be_put_into_slot(slot: SlotClass):
 	if holding_item:
@@ -137,3 +134,12 @@ func slot_gui_input(event: InputEvent, slot: SlotClass):
 func _input(event):
 	if holding_item:
 		holding_item.global_position = get_global_mouse_position()
+
+
+func _on_Hero_picked_up_item(item_name):
+	var new_item = ItemClass.instance()
+	new_item.set_item(item_name, 1)
+	for inventory_slot in inventory_slots.get_children():
+		if inventory_slot.item == null:
+			inventory_slot.putIntoSlot(new_item)
+		break

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fireball2.wav-637ba5dc9995b73837549fd5779d2b4c.sample"
+
+[deps]
+
+source_file="res://Enemies/fireball2.wav"
+dest_files=[ "res://.import/fireball2.wav-637ba5dc9995b73837549fd5779d2b4c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

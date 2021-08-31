@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Zap.ogg-c78147d518b49a0499baa14e47c9f38e.oggstr"
+
+[deps]
+
+source_file="res://Enemies/Zap.ogg"
+dest_files=[ "res://.import/Zap.ogg-c78147d518b49a0499baa14e47c9f38e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

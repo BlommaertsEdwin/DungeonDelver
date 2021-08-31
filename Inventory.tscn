@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sprites/item_slot_default_background.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/default_inventory_background.png" type="Texture" id=2]
 [ext_resource path="res://Slot.gd" type="Script" id=3]
 [ext_resource path="res://Inventory.gd" type="Script" id=4]
-[ext_resource path="res://CharacterSpriteSheets/Barbarian Chest.png" type="Texture" id=5]
 [ext_resource path="res://PaperDoll.gd" type="Script" id=6]
 [ext_resource path="res://fonts/source-code-pro/SourceCodePro.tres" type="DynamicFont" id=10]
 [ext_resource path="res://CharacterSpriteSheets/PaperDollSpriteSheet.png" type="Texture" id=15]
@@ -20,7 +19,7 @@ script = ExtResource( 4 )
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = -8.0
 margin_top = -7.0
-margin_right = 352.0
+margin_right = 398.0
 margin_bottom = 150.0
 texture = ExtResource( 2 )
 expand = true
@@ -29,10 +28,10 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="."]
-margin_left = 228.391
-margin_top = 28.5306
-margin_right = 341.391
-margin_bottom = 122.531
+margin_left = 272.888
+margin_top = 37.0063
+margin_right = 385.888
+margin_bottom = 131.007
 custom_constants/vseparation = 1
 custom_constants/hseparation = 1
 columns = 6
@@ -299,115 +298,6 @@ rect_min_size = Vector2( 18, 18 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
-[node name="PaperDoll" type="TextureRect" parent="."]
-margin_left = 69.989
-margin_top = 38.2275
-margin_right = 153.989
-margin_bottom = 122.227
-expand = true
-stretch_mode = 6
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DollSprite" type="Sprite" parent="PaperDoll"]
-position = Vector2( 16, -8 )
-scale = Vector2( 1.6, 1.6 )
-z_index = 1
-texture = ExtResource( 15 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 17, 135, 30, 55 )
-
-[node name="ChestSlotSprite" type="Sprite" parent="PaperDoll"]
-position = Vector2( 16, -8 )
-scale = Vector2( 1.6, 1.6 )
-z_index = 2
-texture = ExtResource( 5 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 17, 135, 30, 55 )
-
-[node name="ShoulderSlotSprite" type="Sprite" parent="PaperDoll"]
-position = Vector2( 16, -8 )
-scale = Vector2( 1.6, 1.6 )
-z_index = 2
-centered = false
-region_enabled = true
-region_rect = Rect2( 17, 135, 30, 55 )
-
-[node name="HeadSlotSprite" type="Sprite" parent="PaperDoll"]
-position = Vector2( 16, -8 )
-scale = Vector2( 1.6, 1.6 )
-z_index = 2
-centered = false
-region_enabled = true
-region_rect = Rect2( 17, 135, 30, 55 )
-
-[node name="TrouserSlotSprite" type="Sprite" parent="PaperDoll"]
-position = Vector2( 16, -8 )
-scale = Vector2( 1.6, 1.6 )
-z_index = 2
-centered = false
-region_enabled = true
-region_rect = Rect2( 17, 135, 30, 55 )
-
-[node name="BootSlotSprite" type="Sprite" parent="PaperDoll"]
-position = Vector2( 16, -8 )
-scale = Vector2( 1.6, 1.6 )
-z_index = 2
-centered = false
-region_enabled = true
-region_rect = Rect2( 17, 135, 30, 55 )
-
-[node name="BracerSlotSprite" type="Sprite" parent="PaperDoll"]
-position = Vector2( 16, -8 )
-scale = Vector2( 1.6, 1.6 )
-z_index = 2
-centered = false
-region_enabled = true
-region_rect = Rect2( 17, 135, 30, 55 )
-
-[node name="GloveSlotSprite" type="Sprite" parent="PaperDoll"]
-position = Vector2( 16, -8 )
-scale = Vector2( 1.6, 1.6 )
-z_index = 2
-centered = false
-region_enabled = true
-region_rect = Rect2( 17, 135, 30, 55 )
-
-[node name="BeltSlotSprite" type="Sprite" parent="PaperDoll"]
-position = Vector2( 16, -8 )
-scale = Vector2( 1.6, 1.6 )
-z_index = 2
-centered = false
-region_enabled = true
-region_rect = Rect2( 17, 135, 30, 55 )
-
-[node name="BackSlotSprite" type="Sprite" parent="PaperDoll"]
-position = Vector2( 16, -8 )
-scale = Vector2( 1.6, 1.6 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 17, 135, 30, 55 )
-
-[node name="WeaponSlotRightSprite" type="Sprite" parent="PaperDoll"]
-position = Vector2( 16, 33.2973 )
-scale = Vector2( 1.6, 1.6 )
-z_index = 3
-centered = false
-region_enabled = true
-region_rect = Rect2( 14, 672, 35, 24 )
-
-[node name="WeaponSlotLeftSprite" type="Sprite" parent="PaperDoll"]
-position = Vector2( 11, 33 )
-scale = Vector2( 1.6, 1.6 )
-z_index = 2
-centered = false
-region_enabled = true
-region_rect = Rect2( 36, 414, 16, 27 )
-
 [node name="EquipSlotLeft" type="GridContainer" parent="."]
 margin_left = 63.591
 margin_top = 27.4204
@@ -459,9 +349,9 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="EquipSlotRight" type="GridContainer" parent="."]
-margin_left = 138.431
+margin_left = 165.447
 margin_top = 28.2613
-margin_right = 156.431
+margin_right = 183.447
 margin_bottom = 122.261
 custom_constants/vseparation = 1
 custom_constants/hseparation = 1
@@ -501,9 +391,9 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="EquipSlotBottom" type="GridContainer" parent="."]
-margin_left = 90.8919
+margin_left = 103.076
 margin_top = 122.73
-margin_right = 127.892
+margin_right = 140.076
 margin_bottom = 140.73
 custom_constants/vseparation = 1
 custom_constants/hseparation = 1
@@ -528,14 +418,122 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="StatsLabel" type="Label" parent="."]
-margin_left = 158.93
-margin_top = 30.2723
-margin_right = 198.93
-margin_bottom = 44.2723
+margin_left = 187.535
+margin_top = 31.3318
+margin_right = 227.535
+margin_bottom = 45.3318
 custom_fonts/font = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PaperDoll" type="TextureRect" parent="."]
+margin_left = 87.0
+margin_top = 34.0
+margin_right = 154.0
+margin_bottom = 119.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DollSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( -15, -15 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 1
+texture = ExtResource( 15 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 640, 60, 60 )
+
+[node name="ChestSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( -15, -15 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 640, 60, 60 )
+
+[node name="ShoulderSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( -15, -15 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 640, 60, 60 )
+
+[node name="HeadSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( -15, -15 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 640, 60, 60 )
+
+[node name="TrouserSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( -15, -15 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 640, 60, 60 )
+
+[node name="BootSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( -15, -15 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 640, 60, 60 )
+
+[node name="BracerSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( -15, -15 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 640, 60, 60 )
+
+[node name="GloveSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( -15, -15 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 640, 60, 60 )
+
+[node name="BeltSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( -15, -15 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 640, 60, 60 )
+
+[node name="BackSlotSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( -15, -15 )
+scale = Vector2( 1.6, 1.6 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 640, 60, 60 )
+
+[node name="WeaponSlotRightSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( -15, -15 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 2
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 640, 60, 60 )
+
+[node name="WeaponSlotLeftSprite" type="Sprite" parent="PaperDoll"]
+position = Vector2( -15, -15 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 3
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 640, 60, 60 )
 
 [connection signal="added_to_equipment_slot" from="PaperDoll" to="." method="_on_PaperDoll_added_to_equipment_slot"]
 [connection signal="removed_from_equipment_slot" from="PaperDoll" to="." method="_on_PaperDoll_removed_from_equipment_slot"]

@@ -1,4 +1,5 @@
 extends KinematicBody2D
+signal picked_up_item(item_name)
 
 enum {
 	MOVE,
@@ -43,11 +44,18 @@ func _ready():
 	
 # INPUT
 func _unhandled_input(event):
-	if event.is_action_pressed("move"):
+	if event.is_action_pressed("move") and state != DEAD:
 		moving = true
 		destination = get_global_mouse_position()
 	if event.is_action_pressed("attack") and state != DEAD:
 		state = ATTACK
+	if event.is_action_pressed("pickup") and state != DEAD:
+		if $PickupZone.items_in_range.size() > 0:
+			var pickup_item = $PickupZone.items_in_range.values()[0]
+			emit_signal("picked_up_item", pickup_item.item_name)
+			pickup_item.pick_up_item(self)
+			
+			$PickupZone.items_in_range.erase(pickup_item)	
 
 
 func _physics_process(delta):
@@ -148,9 +156,6 @@ func ability_strengthbuff():
 		yield(get_tree().create_timer(3), "timeout")
 		stats.strength -= 100
 		$Buffbar/HBoxContainer/Node2D/Strengthbuff.visible = false
-
-
-
 
 func _add_to_headslot(new_item):
 	$HeadSlotSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")

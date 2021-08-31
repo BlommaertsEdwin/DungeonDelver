@@ -64,7 +64,7 @@ func remove_from_slot(slot_category):
 	elif slot_category == SlotClass.slot_categories.BRACERS:
 		$BracerSlotSprite.texture = null
 	elif slot_category == SlotClass.slot_categories.GLOVES:
-		$BracerSlotSprite.texture = null
+		$GloveSlotSprite.texture = null
 	elif slot_category == SlotClass.slot_categories.WEAPON_RIGHT:
 		$WeaponSlotRightSprite.texture = null
 	elif slot_category == SlotClass.slot_categories.WEAPON_LEFT:
@@ -89,7 +89,7 @@ func add_to_slot(slot_category, item):
 	elif slot_category == SlotClass.slot_categories.BRACERS:
 		_add_to_bracerslot(item)
 	elif slot_category == SlotClass.slot_categories.GLOVES:
-		_add_to_backslot(item)
+		_add_to_gloveslot(item)
 	elif slot_category == SlotClass.slot_categories.WEAPON_RIGHT:
 		_add_to_weaponrightslot(item)
 	elif slot_category == SlotClass.slot_categories.WEAPON_LEFT:

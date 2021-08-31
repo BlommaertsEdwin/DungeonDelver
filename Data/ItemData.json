@@ -12,14 +12,14 @@
     "Description": "It smells like medicine."
   },
   "Iron Sword": {
-    "ItemCategory": "WEAPON_RIGHT",
+    "ItemCategory": "WEAPON_LEFT",
     "ItemAttack": 3,
     "ItemSpeed": 0.75, 
     "StackSize": 1,
     "Description": "Quite a rusty sword, but should be able to get the job done."
   },
   "Barbarian Shield": {
-    "ItemCategory": "WEAPON_LEFT",
+    "ItemCategory": "WEAPON_RIGHT",
     "ItemAttack": 0,
     "ItemSpeed": 0, 
     "StackSize": 1,

@@ -1,6 +1,6 @@
 [gd_scene load_steps=58 format=2]
 
-[ext_resource path="res://Download92621.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/SkeletonGuard/SkeletonGuard.png" type="Texture" id=1]
 [ext_resource path="res://HitHurtBoxes/HitBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://HitHurtBoxes/HurtBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/FemaleWizard/Enemy.gd" type="Script" id=4]
@@ -992,7 +992,7 @@ radius = 15.7436
 height = 45.5012
 
 [sub_resource type="CircleShape2D" id=45]
-radius = 182.5
+radius = 321.238
 
 [sub_resource type="CircleShape2D" id=46]
 radius = 65.5076

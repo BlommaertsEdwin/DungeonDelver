@@ -2,7 +2,7 @@ extends RigidBody2D
 
 const CAST_VELOCITY = Vector2(400, 0)
 var velocity = Vector2.ZERO
-export var lifetime = 10
+export var lifetime = 5
 export var damage = 5
 var angle = 0
 
