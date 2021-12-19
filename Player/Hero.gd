@@ -52,9 +52,8 @@ func _unhandled_input(event):
 	if event.is_action_pressed("pickup") and state != DEAD:
 		if $PickupZone.items_in_range.size() > 0:
 			var pickup_item = $PickupZone.items_in_range.values()[0]
-			emit_signal("picked_up_item", pickup_item.item_name)
+			emit_signal("picked_up_item", pickup_item)
 			pickup_item.pick_up_item(self)
-			
 			$PickupZone.items_in_range.erase(pickup_item)	
 
 
@@ -128,9 +127,10 @@ func player_death():
 	state = DEAD
 
 func _on_SwordHitBox_killed_enemy(experience_gained):
+	print("hopla2")
 	PlayerStats.gain_experience(experience_gained)
 
-func _on_SkillBar_abilityUsed(ability_name, ability_cd):
+func _on_SkillBar_abilityUsed(ability_name):
 	if state != DEAD:
 		if ability_name == 'Slash':
 			state = ATTACK

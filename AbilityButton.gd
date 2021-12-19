@@ -22,7 +22,7 @@ func _ready():
 	time_label.hide()
 	set_process(false)
 
-func _process(delta):
+func _process(_delta):
 	time_label.text = "%3.1f" % $Sweep/Timer.time_left
 	$Sweep.value = ($Sweep/Timer.time_left / get_cooldown()) * 100
 	$GcdSweep.value = ($GcdSweep/GcdTimer.time_left / gcd) * 100

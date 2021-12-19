@@ -43,47 +43,47 @@ func _is_able_to_be_put_into_slot(slot: SlotClass):
 		var holding_item_category = str(JsonData.item_data[holding_item.item_name]["ItemCategory"])
 		if slot.slot_category == slot.slot_categories.HEAD:
 			if holding_item_category == "HEAD":
-				$PaperDoll.add_to_slot(slot.slot_category, holding_item)
+				$PaperDoll.add_to_equipment_slot(slot.slot_category, holding_item)
 				return true
 		if slot.slot_category == slot.slot_categories.WEAPON_LEFT:
 			if holding_item_category == "WEAPON_LEFT":
-				$PaperDoll.add_to_slot(slot.slot_category, holding_item)
+				$PaperDoll.add_to_equipment_slot(slot.slot_category, holding_item)
 				return true
 		if slot.slot_category == slot.slot_categories.WEAPON_RIGHT:
 			if holding_item_category == "WEAPON_RIGHT":
-				$PaperDoll.add_to_slot(slot.slot_category, holding_item)
+				$PaperDoll.add_to_equipment_slot(slot.slot_category, holding_item)
 				return true
 		if slot.slot_category == slot.slot_categories.BRACERS:
 			if holding_item_category == "BRACERS":
-				$PaperDoll.add_to_slot(slot.slot_category, holding_item)
+				$PaperDoll.add_to_equipment_slot(slot.slot_category, holding_item)
 				return true
 		if slot.slot_category == slot.slot_categories.BOOTS:
 			if holding_item_category == "BOOTS":
-				$PaperDoll.add_to_slot(slot.slot_category, holding_item)
+				$PaperDoll.add_to_equipment_slot(slot.slot_category, holding_item)
 				return true
 		if slot.slot_category == slot.slot_categories.SHOULDERS:
 			if holding_item_category == "SHOULDERS":
-				$PaperDoll.add_to_slot(slot.slot_category, holding_item)
+				$PaperDoll.add_to_equipment_slot(slot.slot_category, holding_item)
 				return true
 		if slot.slot_category == slot.slot_categories.CHEST:
 			if holding_item_category == "CHEST":
-				$PaperDoll.add_to_slot(slot.slot_category, holding_item)
+				$PaperDoll.add_to_equipment_slot(slot.slot_category, holding_item)
 				return true
 		if slot.slot_category == slot.slot_categories.TROUSERS:
 			if holding_item_category == "TROUSERS":
-				$PaperDoll.add_to_slot(slot.slot_category, holding_item)
+				$PaperDoll.add_to_equipment_slot(slot.slot_category, holding_item)
 				return true
 		if slot.slot_category == slot.slot_categories.BACK:
 			if holding_item_category == "BACK":
-				$PaperDoll.add_to_slot(slot.slot_category, holding_item)
+				$PaperDoll.add_to_equipment_slot(slot.slot_category, holding_item)
 				return true
 		if slot.slot_category == slot.slot_categories.BELT:
 			if holding_item_category == "BELT":
-				$PaperDoll.add_to_slot(slot.slot_category, holding_item)
+				$PaperDoll.add_to_equipment_slot(slot.slot_category, holding_item)
 				return true
 		if slot.slot_category == slot.slot_categories.GLOVES:
 			if holding_item_category == "GLOVES":
-				$PaperDoll.add_to_slot(slot.slot_category, holding_item)
+				$PaperDoll.add_to_equipment_slot(slot.slot_category, holding_item)
 				return true
 		if slot.slot_category == slot.slot_categories.INVENTORY:
 			return holding_item_category in ["RESOURCE", "CONSUMABLE", "WEAPON_LEFT",
@@ -128,17 +128,18 @@ func slot_gui_input(event: InputEvent, slot: SlotClass):
 			elif slot.item:
 				holding_item = slot.item
 				slot.pickFromSlot()
-				$PaperDoll.remove_from_slot(slot.slot_category)
+				if slot.slot_category != SlotClass.slot_categories.INVENTORY:
+					$PaperDoll.remove_from_equipment_slot(slot.slot_category)
 				holding_item.global_position = get_global_mouse_position()
 				
-func _input(event):
+func _input(_event):
 	if holding_item:
 		holding_item.global_position = get_global_mouse_position()
 
 
-func _on_Hero_picked_up_item(item_name):
+func _on_Hero_picked_up_item(item):
 	var new_item = ItemClass.instance()
-	new_item.set_item(item_name, 1)
+	new_item.set_item(item.name, 1,item.drop_item )
 	for inventory_slot in inventory_slots.get_children():
 		if inventory_slot.item == null:
 			inventory_slot.putIntoSlot(new_item)

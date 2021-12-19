@@ -2,6 +2,7 @@ extends Node2D
 
 var item_name
 var item_quantity
+var drop_item
 var rng = RandomNumberGenerator.new()
 
 
@@ -48,9 +49,10 @@ func _ready():
 #	else:
 #		 $TextureRect/Label.text = String(item_quantity)
 
-func set_item(nm, qt):
+func set_item(nm, qt, di):
 	item_name = nm
 	item_quantity = qt
+	drop_item = di
 	$TextureRect.texture = load("res://ItemIcons/" + item_name + ".png")
 	
 	var stack_size = int(JsonData.item_data[item_name]["StackSize"])

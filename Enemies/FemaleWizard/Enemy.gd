@@ -61,8 +61,10 @@ func _physics_process(delta):
 			animation_tree.set("parameters/ATTACK/blend_position", velocity)
 			animation_tree.set("parameters/DEATH/blend_position", velocity)
 			var hurtbox = $HurtBox/CollisionShape2D
+			if castbarInstance != null:
+				remove_child(castbarInstance)
+				castbarInstance = null
 			hurtbox.disabled = true
-			remove_child(castbarInstance)
 			animation_state.travel("DEATH")
 #			DeadLoop(delta)
 			

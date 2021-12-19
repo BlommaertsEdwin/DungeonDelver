@@ -39,7 +39,12 @@ func putIntoSlot(new_item):
 	item = new_item
 	item.position = Vector2(1,1)
 	var inventoryNode = find_parent('Inventory')
-	inventoryNode.remove_child(item)
+	print(item.drop_item)
+	if item.drop_item:
+		print("Test")
+		item.drop_item = false
+	else:
+		inventoryNode.remove_child(item)
 	add_child(item)
 	refresh_style()
 	

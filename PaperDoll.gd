@@ -9,8 +9,8 @@ signal added_to_equipment_slot(category, item_name)
 const SlotClass = preload("res://Slot.gd")
 
 
-func set(texture, value):
-	texture = value
+func set(_texture, value):
+	_texture = value
 
 
 # Called when the node enters the scene tree for the first time.
@@ -45,7 +45,9 @@ func _add_to_weaponleftslot(new_item):
 func _add_to_weaponrightslot(new_item):
 	$WeaponSlotRightSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
 
-func remove_from_slot(slot_category):
+func remove_from_equipment_slot(slot_category):
+	print("slotcategory")
+	print(slot_category)
 	emit_signal("removed_from_equipment_slot", slot_category)
 	if slot_category == SlotClass.slot_categories.HEAD:
 		$HeadSlotSprite.texture = null
@@ -69,9 +71,10 @@ func remove_from_slot(slot_category):
 		$WeaponSlotRightSprite.texture = null
 	elif slot_category == SlotClass.slot_categories.WEAPON_LEFT:
 		$WeaponSlotLeftSprite.texture = null
+	else:
+		pass
 	
-func add_to_slot(slot_category, item):
-	emit_signal("added_to_equipment_slot", slot_category, item)
+func add_to_equipment_slot(slot_category, item):
 	if slot_category == SlotClass.slot_categories.HEAD:
 		_add_to_headslot(item)
 	elif slot_category == SlotClass.slot_categories.SHOULDERS:
@@ -94,6 +97,9 @@ func add_to_slot(slot_category, item):
 		_add_to_weaponrightslot(item)
 	elif slot_category == SlotClass.slot_categories.WEAPON_LEFT:
 		_add_to_weaponleftslot(item)
+	else:
+		pass
+	emit_signal("added_to_equipment_slot", slot_category, item)
 	
 	
 	

@@ -1,9 +1,6 @@
 extends CanvasLayer
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 onready var xp_bar = $ExperienceBar/ExperienceBar
 var stats = PlayerStats
 
@@ -19,10 +16,14 @@ func experience_changed():
 func level_changed():
 	pass
 
+
+# Set the max value and current experience of the experience bar
 func set_experiencebar():
 	xp_bar.max_value = PlayerStats.experience_required
 	xp_bar.value = PlayerStats.experience_pool
 
+# Sets the Inventory screen to be visible or invisible
+# The I key is linked to the inventory action
 func _unhandled_input(event):
 	if event.is_action_pressed("inventory") and !$Inventory.visible:
 		print("pressed invisible")

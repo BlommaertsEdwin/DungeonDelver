@@ -41,7 +41,7 @@ export var wisdom = 5.0 setget set_wisdom, get_wisdom
 signal experience_changed
 signal experience_required_changed
 signal level_changed
-export var experience_pool = 0 setget set_experience
+export var experience_pool = 0
 export var experience_required = 200 setget set_experience_required
 export var experience_points = 100
 export var level = 1 setget set_level
@@ -83,15 +83,18 @@ func set_wisdom(new_wisdom):
 func get_wisdom():
 	return wisdom
 
-func set_experience(experience):
+func set_experience_pool(experience):
+	print("Hopla3")
 	experience_pool += experience
+	print(experience_pool)
 	emit_signal("experience_changed")
 	
-func set_experience_required(experience_required):
+func set_experience_required(experience_req):
+	experience_required = experience_req
 	emit_signal("experience_required_changed")
 	
-func set_level(level):
-	level += 1
+func set_level(level_increase):
+	level += level_increase
 	emit_signal("level_changed")
 
 func take_damage(damage):
@@ -180,7 +183,7 @@ func regenerate_health():
 			current_health = max_health
 
 func gain_experience(experience_gained):
-	experience_pool += experience_gained
+	set_experience_pool(experience_gained)
 	while experience_pool >= experience_required:
 		LevelUp()
 		experience_pool -= experience_required
