@@ -181,8 +181,7 @@ func _add_to_weaponrightslot(new_item):
 	$WeaponSlotRightSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
 
 
-
-func _on_PaperDoll_added_to_equipment_slot(category, new_item):
+func _on_PaperDoll_add_item_to_equipment_slot(category, new_item):
 	if SlotClass.slot_categories.HEAD == category:
 		$HeadSlotSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
 	if SlotClass.slot_categories.SHOULDERS == category:
@@ -205,8 +204,11 @@ func _on_PaperDoll_added_to_equipment_slot(category, new_item):
 		$WeaponSlotLeftSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name + ".png")
 	if SlotClass.slot_categories.WEAPON_LEFT == category:
 		$WeaponSlotRightSprite.texture = load("res://CharacterSpriteSheets/" + new_item.item_name +".png")
+	else:
+		pass # Replace with function body.
 
-func _on_PaperDoll_removed_from_equipment_slot(category):
+
+func _on_PaperDoll_remove_item_from_equipment_slot(category):
 	if SlotClass.slot_categories.HEAD == category:
 		$HeadSlotSprite.texture = null
 	if SlotClass.slot_categories.SHOULDERS == category:
@@ -229,3 +231,5 @@ func _on_PaperDoll_removed_from_equipment_slot(category):
 		$WeaponSlotLeftSprite.texture = null
 	if SlotClass.slot_categories.WEAPON_LEFT == category:
 		$WeaponSlotRightSprite.texture = null
+	else:
+		pass

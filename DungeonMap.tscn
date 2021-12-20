@@ -255,8 +255,8 @@ z_index = 2
 
 [connection signal="picked_up_item" from="Hero" to="GUI/Inventory" method="_on_Hero_picked_up_item"]
 [connection signal="abilityUsed" from="GUI/SkillBar" to="Hero" method="_on_SkillBar_abilityUsed"]
-[connection signal="added_to_equipment_slot" from="GUI/Inventory/PaperDoll" to="Hero" method="_on_PaperDoll_added_to_equipment_slot"]
-[connection signal="removed_from_equipment_slot" from="GUI/Inventory/PaperDoll" to="Hero" method="_on_PaperDoll_removed_from_equipment_slot"]
+[connection signal="add_item_to_equipment_slot" from="GUI/Inventory/PaperDoll" to="Hero" method="_on_PaperDoll_add_item_to_equipment_slot"]
+[connection signal="remove_item_from_equipment_slot" from="GUI/Inventory/PaperDoll" to="Hero" method="_on_PaperDoll_remove_item_from_equipment_slot"]
 
 [editable path="Hero"]
 [editable path="Hero/HurtBox"]

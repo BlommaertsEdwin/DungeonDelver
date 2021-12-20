@@ -144,3 +144,4 @@ func _on_Hero_picked_up_item(item):
 		if inventory_slot.item == null:
 			inventory_slot.putIntoSlot(new_item)
 		break
+

@@ -50,6 +50,8 @@ JsonData="*res://JSONData.gd"
 [debug]
 
 settings/fps/force_fps=60
+settings/stdout/print_fps=true
+settings/stdout/verbose_stdout=true
 
 [display]
 

@@ -1,6 +1,6 @@
 extends TextureRect
-signal removed_from_equipment_slot(category)
-signal added_to_equipment_slot(category, item_name)
+signal remove_item_from_equipment_slot(category)
+signal add_item_to_equipment_slot(category, item_name)
 
 
 # Declare member variables here. Examples:
@@ -48,7 +48,7 @@ func _add_to_weaponrightslot(new_item):
 func remove_from_equipment_slot(slot_category):
 	print("slotcategory")
 	print(slot_category)
-	emit_signal("removed_from_equipment_slot", slot_category)
+	emit_signal("remove_item_from_equipment_slot", slot_category)
 	if slot_category == SlotClass.slot_categories.HEAD:
 		$HeadSlotSprite.texture = null
 	elif slot_category == SlotClass.slot_categories.SHOULDERS:
@@ -99,7 +99,7 @@ func add_to_equipment_slot(slot_category, item):
 		_add_to_weaponleftslot(item)
 	else:
 		pass
-	emit_signal("added_to_equipment_slot", slot_category, item)
+	emit_signal("add_item_to_equipment_slot",slot_category,item)
 	
 	
 	
