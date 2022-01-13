@@ -1,21 +1,18 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://DungeonMap.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/tile_grass_v01bs.png" type="Texture" id=3]
-[ext_resource path="res://Enemies/FemaleWizard/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ArenaMaps/GrasslandMap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://AbilityBox.png" type="Texture" id=6]
 [ext_resource path="res://gladius.png" type="Texture" id=7]
 [ext_resource path="res://AbilityButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player/GUI.gd" type="Script" id=9]
 [ext_resource path="res://ExperienceBar.tscn" type="PackedScene" id=10]
-[ext_resource path="res://ItemDrop.tscn" type="PackedScene" id=11]
 [ext_resource path="res://all-for-one.png" type="Texture" id=12]
 [ext_resource path="res://GUI.gd" type="Script" id=13]
 [ext_resource path="res://armor-upgrade.png" type="Texture" id=14]
 [ext_resource path="res://fonts/poco/Poco.tres" type="DynamicFont" id=15]
 [ext_resource path="res://Inventory.tscn" type="PackedScene" id=16]
-[ext_resource path="res://ItemIcons/Iron Sword.png" type="Texture" id=17]
 
 [sub_resource type="Animation" id=2]
 resource_name = "Test"
@@ -23,10 +20,6 @@ resource_name = "Test"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=3]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=7]
 
 [sub_resource type="BitmapFont" id=5]
 
@@ -112,40 +105,7 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="Maps" type="Node2D" parent="."]
 
-[node name="GrasslandMap" type="Node2D" parent="Maps"]
-
-[node name="Background" type="Sprite" parent="Maps/GrasslandMap"]
-position = Vector2( -305.262, -210.705 )
-texture = ExtResource( 3 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 620, 360 )
-region_filter_clip = true
-
-[node name="YSort NPCS" type="YSort" parent="Maps/GrasslandMap"]
-
-[node name="RedWizard" parent="Maps/GrasslandMap/YSort NPCS" instance=ExtResource( 5 )]
-position = Vector2( 132.143, -124.592 )
-
-[node name="AnimationTree" parent="Maps/GrasslandMap/YSort NPCS/RedWizard" index="4"]
-parameters/playback = SubResource( 6 )
-parameters/ATTACK/1/playback = SubResource( 7 )
-
-[node name="Stats" parent="Maps/GrasslandMap/YSort NPCS/RedWizard" index="6"]
-max_health = 1.0
-
-[node name="MapItems" type="Node2D" parent="Maps/GrasslandMap"]
-
-[node name="Slime Potion" parent="Maps/GrasslandMap/MapItems" instance=ExtResource( 11 )]
-position = Vector2( -26.595, 56.5611 )
-item_name = "Slime Potion"
-
-[node name="Iron Sword" parent="Maps/GrasslandMap/MapItems" instance=ExtResource( 11 )]
-position = Vector2( -282, 127 )
-item_name = "Iron Sword"
-
-[node name="Sprite" parent="Maps/GrasslandMap/MapItems/Iron Sword" index="0"]
-texture = ExtResource( 17 )
+[node name="GrasslandMap" parent="Maps" instance=ExtResource( 3 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -263,12 +223,6 @@ z_index = 2
 [editable path="Hero/HitBoxPivot/SwordHitBox"]
 [editable path="Hero/Healthbar"]
 [editable path="Hero/Manabar"]
-[editable path="Maps/GrasslandMap/YSort NPCS/RedWizard"]
-[editable path="Maps/GrasslandMap/YSort NPCS/RedWizard/HurtBox"]
-[editable path="Maps/GrasslandMap/YSort NPCS/RedWizard/HitBoxPosition/StaffHitBox"]
-[editable path="Maps/GrasslandMap/YSort NPCS/RedWizard/PlayerDetectionZone"]
-[editable path="Maps/GrasslandMap/MapItems/Slime Potion"]
-[editable path="Maps/GrasslandMap/MapItems/Iron Sword"]
 [editable path="GUI/ExperienceBar"]
 [editable path="GUI/SkillBar/Background/HBoxContainer/AbilityButton1"]
 [editable path="GUI/SkillBar/Background/HBoxContainer/AbilityButton2"]

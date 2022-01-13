@@ -1,6 +1,5 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=58 format=2]
 
-[ext_resource path="res://Download17043.png" type="Texture" id=1]
 [ext_resource path="res://Player/Hero.gd" type="Script" id=2]
 [ext_resource path="res://HitHurtBoxes/HitBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HitHurtBoxes/HurtBox.tscn" type="PackedScene" id=4]
@@ -7017,18 +7016,10 @@ height = 0.0
 radius = 38.0526
 
 [node name="Hero" type="KinematicBody2D"]
-position = Vector2( 0, -31 )
+position = Vector2( 0, -24 )
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="."]
-visible = false
-texture = ExtResource( 1 )
-hframes = 6
-vframes = 4
-region_enabled = true
-region_rect = Rect2( 0, 1344, 1152, 768 )
 
 [node name="CharacterSprite" type="Sprite" parent="."]
 z_index = 2
@@ -7143,8 +7134,8 @@ anims/WalkLeft = SubResource( 11 )
 anims/WalkRight = SubResource( 12 )
 anims/WalkUp = SubResource( 13 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 24 )
+[node name="RealPlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 24 )
 shape = SubResource( 14 )
 script = ExtResource( 6 )
 
@@ -7209,7 +7200,6 @@ __meta__ = {
 [node name="Node2D" type="Node2D" parent="Buffbar/HBoxContainer"]
 
 [node name="Strengthbuff" type="Sprite" parent="Buffbar/HBoxContainer/Node2D"]
-visible = false
 scale = Vector2( 0.01, 0.01 )
 texture = ExtResource( 9 )
 centered = false
@@ -7220,7 +7210,7 @@ collision_mask = 4
 script = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupZone"]
-position = Vector2( 0, 31.1127 )
+position = Vector2( 0, 31 )
 shape = SubResource( 46 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
