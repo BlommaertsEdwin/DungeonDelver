@@ -30,74 +30,74 @@ script = ExtResource( 2 )
 [node name="Hero" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 0 )
 
-[node name="CharacterSprite" parent="Hero" index="1"]
+[node name="CharacterSprite" parent="Hero" index="0"]
 hframes = 6
 frame = 12
 region_rect = Rect2( 0, 768, 384, 256 )
 
-[node name="HeadSlotSprite" parent="Hero" index="2"]
+[node name="HeadSlotSprite" parent="Hero" index="1"]
 hframes = 6
 frame = 12
 region_rect = Rect2( 0, 768, 384, 256 )
 
-[node name="ShoulderSlotSprite" parent="Hero" index="3"]
+[node name="ShoulderSlotSprite" parent="Hero" index="2"]
 hframes = 6
 frame = 12
 region_rect = Rect2( 0, 768, 384, 256 )
 
-[node name="ChestSlotSprite" parent="Hero" index="4"]
+[node name="ChestSlotSprite" parent="Hero" index="3"]
 hframes = 6
 frame = 12
 region_rect = Rect2( 0, 768, 384, 256 )
 
-[node name="TrouserSlotSprite" parent="Hero" index="5"]
+[node name="TrouserSlotSprite" parent="Hero" index="4"]
 hframes = 6
 frame = 12
 region_rect = Rect2( 0, 768, 384, 256 )
 
-[node name="BootSlotSprite" parent="Hero" index="6"]
+[node name="BootSlotSprite" parent="Hero" index="5"]
 hframes = 6
 frame = 12
 region_rect = Rect2( 0, 768, 384, 256 )
 
-[node name="BracerSlotSprite" parent="Hero" index="7"]
+[node name="BracerSlotSprite" parent="Hero" index="6"]
 hframes = 6
 frame = 12
 region_rect = Rect2( 0, 768, 384, 256 )
 
-[node name="GlovesSlotSprite" parent="Hero" index="8"]
+[node name="GlovesSlotSprite" parent="Hero" index="7"]
 hframes = 6
 frame = 12
 region_rect = Rect2( 0, 768, 384, 256 )
 
-[node name="BeltSlotSprite" parent="Hero" index="9"]
+[node name="BeltSlotSprite" parent="Hero" index="8"]
 hframes = 6
 frame = 12
 region_rect = Rect2( 0, 768, 384, 256 )
 
-[node name="BackSlotSprite" parent="Hero" index="10"]
+[node name="BackSlotSprite" parent="Hero" index="9"]
 hframes = 6
 frame = 12
 region_rect = Rect2( 0, 768, 384, 256 )
 
-[node name="WeaponSlotRightSprite" parent="Hero" index="11"]
+[node name="WeaponSlotRightSprite" parent="Hero" index="10"]
 hframes = 6
 frame = 12
 region_rect = Rect2( 0, 1344, 1152, 768 )
 
-[node name="WeaponSlotLeftSprite" parent="Hero" index="12"]
+[node name="WeaponSlotLeftSprite" parent="Hero" index="11"]
 hframes = 6
 frame = 12
 region_rect = Rect2( 0, 768, 384, 256 )
 
-[node name="AnimationPlayer" parent="Hero" index="13"]
+[node name="AnimationPlayer" parent="Hero" index="12"]
 anims/Test = SubResource( 2 )
 
-[node name="AnimationTree" parent="Hero" index="15"]
+[node name="AnimationTree" parent="Hero" index="14"]
 parameters/playback = SubResource( 3 )
 parameters/ATTACK/1/playback = SubResource( 4 )
 
-[node name="HitBoxPivot" parent="Hero" index="17"]
+[node name="HitBoxPivot" parent="Hero" index="16"]
 rotation = 1.5708
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Hero"]

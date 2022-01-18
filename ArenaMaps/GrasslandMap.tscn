@@ -1,14 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ArenaMaps/Tree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/tile_grass_v01bs.png" type="Texture" id=2]
 [ext_resource path="res://Player/Hero.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ArenaMaps/Fence-III.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ArenaMaps/Bush.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ArenaMaps/Fence-II.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ArenaMaps/Fence.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ArenaMaps/Boar.tscn" type="PackedScene" id=8]
 
 [node name="GrasslandMap" type="Node2D"]
 position = Vector2( -7, 7 )
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 7, -7 )
+position = Vector2( 7, -8 )
 scale = Vector2( 1.33871, 1.23333 )
 texture = ExtResource( 2 )
 centered = false
@@ -16,15 +21,48 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 620, 360 )
 region_filter_clip = true
 
+[node name="Fence" parent="Background" instance=ExtResource( 7 )]
+position = Vector2( 215.879, 273.244 )
+
+[node name="Boar" parent="Background" instance=ExtResource( 8 )]
+position = Vector2( 265.181, 98.1083 )
+
 [node name="YSort NPCS" type="YSort" parent="."]
 
-[node name="Tree" parent="YSort NPCS" instance=ExtResource( 1 )]
-position = Vector2( 317, 203 )
+[node name="Fence-III2" parent="YSort NPCS" instance=ExtResource( 4 )]
+position = Vector2( 526, 90 )
+
+[node name="Fence-III" parent="YSort NPCS" instance=ExtResource( 4 )]
+position = Vector2( 526, 135 )
+
+[node name="Fence-II" parent="YSort NPCS" instance=ExtResource( 6 )]
+position = Vector2( 495, 173 )
+scale = Vector2( 1.33871, 1.23333 )
+z_index = 2
+collision_layer = 16384
+collision_mask = 16384
+
+[node name="Bush" parent="YSort NPCS" instance=ExtResource( 5 )]
+position = Vector2( 238, 240 )
+scale = Vector2( 1.33871, 1.23333 )
+z_index = 2
+collision_layer = 16384
+collision_mask = 16384
+
+[node name="Bush2" parent="YSort NPCS" instance=ExtResource( 5 )]
+position = Vector2( 201, 241 )
+scale = Vector2( 1.33871, 1.23333 )
+z_index = 2
+collision_layer = 16384
+collision_mask = 16384
 
 [node name="Hero" parent="YSort NPCS" instance=ExtResource( 3 )]
 position = Vector2( 386, 215 )
 
+[node name="Tree" parent="YSort NPCS" instance=ExtResource( 1 )]
+position = Vector2( 317, 203 )
+
 [node name="Tree2" parent="YSort NPCS" instance=ExtResource( 1 )]
-position = Vector2( 456, 210 )
+position = Vector2( 519, 266 )
 
 [node name="MapItems" type="Node2D" parent="YSort NPCS"]
