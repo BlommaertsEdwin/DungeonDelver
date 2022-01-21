@@ -136,7 +136,8 @@ func _physics_process(delta):
 
 func DeadLoop(delta):
 	
-	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	# Removed because when dead it doesn't need to move anymore.
+	# velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	animation_state.travel("DEATH")
 
 func seek_player():

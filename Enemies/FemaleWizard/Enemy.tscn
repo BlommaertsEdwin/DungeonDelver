@@ -981,7 +981,7 @@ states/WALK/node = SubResource( 35 )
 states/WALK/position = Vector2( 427, 83 )
 transitions = [ "IDLE", "WALK", SubResource( 36 ), "WALK", "IDLE", SubResource( 37 ), "IDLE", "ATTACK", SubResource( 38 ), "ATTACK", "IDLE", SubResource( 39 ), "IDLE", "DEATH", SubResource( 40 ) ]
 start_node = "IDLE"
-graph_offset = Vector2( 0, -195.675 )
+graph_offset = Vector2( 0, -22.5707 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=42]
 
@@ -1007,8 +1007,10 @@ position = Vector2( 0, 15 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 6
+vframes = 4
+frame = 12
 region_enabled = true
-region_rect = Rect2( 0, 1280, 384, 64 )
+region_rect = Rect2( 0, 1344, 1152, 768 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/AttackDown = SubResource( 1 )
